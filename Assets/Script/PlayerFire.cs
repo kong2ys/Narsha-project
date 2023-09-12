@@ -1,19 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerFire : MonoBehaviour
 {
-    int poolSize = 25;
+    public int poolSize = 25;
     GameObject[]  bulletObjectPool;
     public GameObject bulletFactory;//프리팹
-    public GameObject firePosition;//만들어질 위치
+
+    public GameObject firePosition; //만들어질 위치
     public float attackDelay;
 
     private bool _isFire;
-    // Start is called before the first frame update
+    public int amountOfBullets = 3;
+    public GameObject[] bulletPositionList;
+
+    //public GameObject skill;
+
     void Start()
     {
+
+
         bulletObjectPool = new GameObject[poolSize];
         for (int i = 0; i< poolSize; i++)
         {
@@ -27,22 +35,28 @@ public class PlayerFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //프리팹을 이용해서 빈오브젝트에 반영한다.
-            //오브젝트 생성되면 이동한다.
+        //skill YearSkill = skill.GetComponent<skill>();
+        //bool skillOnee = YearSkill.SkillOne;
     }
 
 
     IEnumerator Fire()
     {
-        for (int i = 0; i < poolSize; i++)
+        for (int j = 0; j < amountOfBullets; j++)
         {
-            Debug.Log(i);
-            GameObject bullet = bulletObjectPool[i];
-            if (bullet.activeSelf == false)
+            for (int i = 0; i < poolSize; i++)
             {
-                bullet.SetActive(true);
-                bullet.transform.position = firePosition.transform.position;
-                break;
+               
+                GameObject bullet = bulletObjectPool[i];
+                if (bullet.activeSelf == false)
+                {
+                    bullet.SetActive(true);
+                    bullet.transform.position = firePosition.transform.position;
+                    GameObject target = GameObject.Find("FirePosition");
+                    transform.rotation = target.transform.rotation;
+                    
+                    break;
+                }
             }
         }
 

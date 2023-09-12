@@ -9973,6 +9973,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5ae8c47091a4539b3d958a092f306f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 30
   maxDistance: 100
-  startPos: {x: 0, y: 0, z: 0}
