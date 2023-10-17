@@ -29,17 +29,19 @@ public class MainMenu : MonoBehaviour
     public void OnClickOption()
     {
         Debug.Log("옵션");
+        SceneManager.LoadScene("Resolution");
     }
 
     public void OnClickQuit()
     {
         Debug.Log("종료");
-
+        Application.Quit();
+/*
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
-#endif
+#endif */
     }
-
+    
 }

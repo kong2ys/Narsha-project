@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1902943c-f7a7-4f6a-a0bb-44d376450a49" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UITEST.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UITEST.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UGUI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UGUI.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UGUI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UGUI/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +35,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Develop&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -98,6 +101,9 @@
       <workItem from="1694506479311" duration="1382000" />
       <workItem from="1694507882083" duration="2730000" />
       <workItem from="1694514026720" duration="1811000" />
+      <workItem from="1697022120915" duration="674000" />
+      <workItem from="1697508883424" duration="12000" />
+      <workItem from="1697508961846" duration="808000" />
     </task>
     <servers />
   </component>
