@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1902943c-f7a7-4f6a-a0bb-44d376450a49" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Skills/Passive/PassiveAxe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Skills/Passive/PassiveAxe.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Resolution.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Resolution.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UITEST.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UITEST.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +49,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/TestBuild\NarshaSSR.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\yoosung\Documents\GitHub\Narsha-project\TestBuild" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.25f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\yoosung\Documents\GitHub\Narsha-project -debugCodeOptimization" />
@@ -101,6 +111,8 @@
       <workItem from="1697508883424" duration="12000" />
       <workItem from="1697508961846" duration="1961000" />
       <workItem from="1697529234557" duration="25000" />
+      <workItem from="1697532684231" duration="225000" />
+      <workItem from="1697532938578" duration="114000" />
     </task>
     <servers />
   </component>
