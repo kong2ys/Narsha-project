@@ -35,13 +35,13 @@ public class MainMenu : MonoBehaviour
     public void OnClickQuit()
     {
         Debug.Log("종료");
-        Application.Quit();
-/*
+        //Application.Quit();
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
-#endif */
+#endif 
     }
     
 }
