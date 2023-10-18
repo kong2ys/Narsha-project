@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1902943c-f7a7-4f6a-a0bb-44d376450a49" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy A.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy A.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy B.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy B.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/PoolManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +17,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -115,6 +120,7 @@
       <workItem from="1697553680954" duration="692000" />
       <workItem from="1697638101131" duration="336000" />
       <workItem from="1697638477509" duration="4000" />
+      <workItem from="1697639122792" duration="1550000" />
     </task>
     <servers />
   </component>
