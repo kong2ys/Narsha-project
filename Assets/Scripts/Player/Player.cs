@@ -44,24 +44,5 @@ public class Player :  MonoBehaviour
         _dir.y = _yVelocity;
         _characterController.Move(_dir * (playerSpeed * Time.deltaTime));
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Enemy") && !isDamaging)
-        {
-            Debug.Log("닿음");
-            StartCoroutine(OnDamaged(25));
-        }
-    }
-
-    IEnumerator OnDamaged(float damage)
-    {
-        isDamaging = true;
-        playerHp -= damage;
-        
-        Debug.Log("플레이어 HP" + playerHp);
-
-        yield return new WaitForSeconds(1.0f);
-        isDamaging = false;
-    }
+    
 }
