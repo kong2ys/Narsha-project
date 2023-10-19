@@ -4,36 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1902943c-f7a7-4f6a-a0bb-44d376450a49" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Materials/Bullet.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Materials/Bullet.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Materials/Floor.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Materials/Floor.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Prefabs/Axe.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Prefabs/Axe.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Prefabs/Bullet.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Prefabs/Bullet.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Prefabs/Enemy.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Prefabs/Enemy.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Prefabs/Player.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/@Resource/Prefabs/Player.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy A.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy A.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy A.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy A.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayerScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayerScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemys/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemys/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemys/Enemy.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemys/Enemy.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Bullet.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Bullet.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/CameraFollw.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/CameraFollw.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Skills/Passive/PassiveAxe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Skills/Passive/PassiveAxe.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-    </list>
+    <list default="true" id="1902943c-f7a7-4f6a-a0bb-44d376450a49" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -145,7 +116,7 @@
       <workItem from="1697638101131" duration="336000" />
       <workItem from="1697638477509" duration="4000" />
       <workItem from="1697639122792" duration="1550000" />
-      <workItem from="1697725261134" duration="596000" />
+      <workItem from="1697725264647" duration="1732000" />
     </task>
     <servers />
   </component>
