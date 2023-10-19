@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Axe
+  - Wall
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -14,11 +18,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Bullet
+  - Skill
+  - Wall
   - 
   - 
   - 

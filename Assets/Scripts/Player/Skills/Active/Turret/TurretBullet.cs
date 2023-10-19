@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class TurretBullet : MonoBehaviour
 {
     public float speed;
     private Vector3 _dir;
@@ -13,9 +13,15 @@ public class Bullet : MonoBehaviour
     
     private Vector3 _startPos;
 
+    void Update()
+    {
+        Shoot();
+        CheckRange();
+    }
+    
     void OnEnable()
     {
-        _target = GameObject.Find("FirePosition");
+        _target = GameObject.Find("TurretFirePosition");
         _startPos = _target.transform.position;
         transform.rotation = _target.transform.rotation;
     }
@@ -34,16 +40,9 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        Shoot();
-        CheckRange();
-    }
-
     void OnTriggerEnter(Collider enemy)
     {
         Debug.Log("맞았다!");
         gameObject.SetActive(false);
-        
     }
 }
