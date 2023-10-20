@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 3bb2860d49cbe8e4bbfe57d8f0829b94
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bulletFactory: {fileID: 4104036703790517647, guid: 7da14fe3fb48ae447b99c826d0909d60, type: 3}
+  - followCamera: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
