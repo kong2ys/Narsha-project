@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1902943c-f7a7-4f6a-a0bb-44d376450a49" name="Changes" comment="" />
+    <list default="true" id="1902943c-f7a7-4f6a-a0bb-44d376450a49" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy A.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy A.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy B.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy B.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy B.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefebs/Enemy B.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayerScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayerScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemys/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemys/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/PoolManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/Spawner.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,6 +126,8 @@
       <workItem from="1697638477509" duration="4000" />
       <workItem from="1697639122792" duration="1550000" />
       <workItem from="1697725264647" duration="1732000" />
+      <workItem from="1697776983900" duration="594000" />
+      <workItem from="1697777597036" duration="686000" />
     </task>
     <servers />
   </component>
