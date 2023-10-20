@@ -1,18 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Transform[] spawnPoint;
+
+    private float timer;
+
+    private void Awake()
     {
-        
+        spawnPoint = GetComponentsInChildren<Transform>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        timer += Time.deltaTime;
+
+        if (timer > 0.2f)
+        {
+            timer = 0;
+            Spawn();
+        }
+    }
+
+    void Spawn()
+    {
+        GameObject enemy = GameManager.instance.pool.Get(Random.Range(0, 2));
+        enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
     }
 }

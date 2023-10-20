@@ -1,30 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform target;
-    private Vector3 _dir;
+    public Rigidbody target;
     public float speed = 5f;
 
     public float attackRange = 2f;
     public float attackDeley = 1f;
 
     private bool canAttack = true;
+    private bool isLive = true;
     
-    void Start()
+    private Rigidbody rigid;
+
+    
+    
+    void Awake()
     {
-        
+        rigid = GetComponent<Rigidbody>();
     }
     
     void FixedUpdate()
     {
-        transform.LookAt(transform.position + _dir);
-        _dir = target.transform.position - transform.position;
-        _dir.Normalize();
-        transform.position += _dir * (speed * Time.fixedDeltaTime);
-
+        if (!isLive)
+            return;
+        
+        Vector3 dirVec = target.position - rigid.position;
+        Vector3 nextVec = dirVec.normalized * (speed * Time.fixedDeltaTime);
+        rigid.MovePosition(rigid.position + nextVec);
+        rigid.velocity = Vector3.zero;
+        
         float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
 
         if (distanceToTarget <= attackRange && canAttack)
@@ -33,6 +41,11 @@ public class Enemy : MonoBehaviour
             canAttack = false;
             StartCoroutine(ResetAttackState());
         }
+    }
+    
+    private void OnEnable() 
+    {
+        target = GameManager.instance.player.GetComponent<Rigidbody>();
     }
 
     IEnumerator Attack()
