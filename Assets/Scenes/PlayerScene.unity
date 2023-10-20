@@ -2293,16 +2293,6 @@ MonoBehaviour:
     skillLevel: 0
     weight: 0
     value: 2
-  - skillName: Turret
-    skillImage: {fileID: 21300000, guid: e69613fcbef86dc469064c61db3ef9fd, type: 3}
-    skillLevel: 0
-    weight: 0
-    value: 2
-  - skillName: Turret
-    skillImage: {fileID: 21300000, guid: e69613fcbef86dc469064c61db3ef9fd, type: 3}
-    skillLevel: 0
-    weight: 0
-    value: 2
   randomSkill: []
   skillValue: 0
 --- !u!114 &1543180530
