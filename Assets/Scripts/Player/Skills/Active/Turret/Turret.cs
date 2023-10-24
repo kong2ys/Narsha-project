@@ -23,9 +23,8 @@ public class Turret : MonoBehaviour
     
     private bool _isFiring = false;
 
-    private void Awake()
+    private void Start()
     {
-        GameDataManager.Instance.TurretLevel = 0;
         MakeTurretBullet();
     }
 

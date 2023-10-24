@@ -17,11 +17,6 @@ public class PassiveAxe : MonoBehaviour
 
     private float _deg;
 
-    private void Awake()
-    {
-        GameDataManager.Instance.AxeLevel = 0;
-    }
-
     private void Update()
     {
         switch (GameDataManager.Instance.AxeLevel)

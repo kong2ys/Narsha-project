@@ -25,10 +25,8 @@ public class Drone : MonoBehaviour
     public Transform floowTarget;
     public Vector3 offset;
 
-    void Awake()
+    void Start()
     {
-        GameDataManager.Instance.DroneLevel = 0;
-        
         _collider = GetComponent<Collider>();
 
         MakeDronBullet();

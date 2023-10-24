@@ -32,11 +32,14 @@ public class PlayerController :  MonoBehaviour
 
     void Start()
     {
-        _currentPlayerLevel = GameDataManager.Instance.PlayerLevel;
-        
         _characterController = GetComponent<CharacterController>();
 
         GameDataManager.Instance.PlayerLevel = 1;
+        GameDataManager.Instance.FireLevel = 1;
+        GameDataManager.Instance.TurretLevel = 0;
+        GameDataManager.Instance.AxeLevel = 0;
+        GameDataManager.Instance.DroneLevel = 0;
+        _currentPlayerLevel = GameDataManager.Instance.PlayerLevel;
 
         MakeBullet();
         StartCoroutine(Fire());
@@ -50,6 +53,16 @@ public class PlayerController :  MonoBehaviour
 
         if (GameDataManager.Instance.PlayerLevel-1 == _currentPlayerLevel) // 레벨업 시 스킬 선택창 띄우기
         {
+            switch (GameDataManager.Instance.PlayerLevel)
+            {
+                case 5 or 10 or 15 or 20 or 30:
+                {
+                    GameDataManager.Instance.TurretLevel++;
+                    
+                    _currentPlayerLevel = GameDataManager.Instance.PlayerLevel;
+                    break;
+                }
+            }
             selectSkillWindow.SetActive(true);
             _currentPlayerLevel = GameDataManager.Instance.PlayerLevel;
         }

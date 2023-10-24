@@ -123,15 +123,6 @@ public class SelectSkill : MonoBehaviour
             }
             case 2:
             {
-                if (GameDataManager.Instance.AxeLevel < 5)
-                {
-                    GameDataManager.Instance.TurretLevel++;
-                    Debug.Log("터렛렙"+GameDataManager.Instance.TurretLevel);
-                }
-                break;
-            }
-            case 3:
-            {
                 if (GameDataManager.Instance.DroneLevel < 5)
                 {
                     GameDataManager.Instance.DroneLevel++;
