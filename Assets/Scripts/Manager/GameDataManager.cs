@@ -15,12 +15,13 @@ public class GameData
     public int fireLevel = 0;
     public int axeLevel = 0;
     public int turretLevel = 0;
+    public int droneLevel = 0;
 }
 
 public class GameDataManager
 {
     private static GameDataManager _instance;
-
+    
     public static GameDataManager Instance
     {
         get
@@ -30,8 +31,7 @@ public class GameDataManager
             return _instance;
         }
     }
-    
-    
+
     GameData _gameData = new GameData();
 
     public int PlayerLevel
@@ -68,5 +68,10 @@ public class GameDataManager
     {
         get { return _gameData.turretLevel; }
         set { _gameData.turretLevel = value; }
+    }
+    public int DroneLevel
+    {
+        get { return _gameData.droneLevel; }
+        set { _gameData.droneLevel = value; }
     }
 }

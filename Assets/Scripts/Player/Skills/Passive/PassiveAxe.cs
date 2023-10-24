@@ -17,11 +17,13 @@ public class PassiveAxe : MonoBehaviour
 
     private float _deg;
 
+    private void Awake()
+    {
+        GameDataManager.Instance.AxeLevel = 0;
+    }
+
     private void Update()
     {
-        LevelUp();
-        
-        Debug.Log("여기 도기렙 바뀜?" + GameDataManager.Instance.AxeLevel);
         switch (GameDataManager.Instance.AxeLevel)
         {
             case 1:
@@ -48,27 +50,6 @@ public class PassiveAxe : MonoBehaviour
             {
                 AxesRotate(5);
                 break;
-            }
-        }
-    }
-    
-    void LevelUp() // 이걸로 유니티 인스펙터 창에서 힘들게 직접 바꿔가며 하지 말고 P눌러 1렙 올리고 M눌러 1렙 내리셈 ㅇㅇ 단순 테스트용임 ㅇㅇ
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            if (GameDataManager.Instance.AxeLevel < 5)
-            {
-                GameDataManager.Instance.AxeLevel += 1;
-                Debug.Log("도끼렙" + GameDataManager.Instance.AxeLevel);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            if (GameDataManager.Instance.AxeLevel > 0)
-            {
-                GameDataManager.Instance.AxeLevel -= 1;
-                Debug.Log("도끼렙" + GameDataManager.Instance.AxeLevel);
             }
         }
     }

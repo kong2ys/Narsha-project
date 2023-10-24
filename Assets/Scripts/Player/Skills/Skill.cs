@@ -10,6 +10,7 @@ public class Skill
     public int skillLevel;
     public int weight;
     public int value;
+    public GameObject skillObject;
 
     public Skill(Skill skill)
     {
@@ -18,5 +19,6 @@ public class Skill
         this.skillLevel = skill.skillLevel;
         this.weight = skill.weight;
         this.value = skill.value;
+        this.skillObject = skill.skillObject;
     }
 }

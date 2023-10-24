@@ -81,7 +81,7 @@ public class VideoOption : MonoBehaviour
 
     public void BackBtn()
     {
-        SceneManager.LoadScene("UITEST");
+        SceneManager.LoadScene("StartScene");
         Debug.Log("Back");
     }
 }

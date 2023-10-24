@@ -24,16 +24,6 @@ public class SelectSkill : MonoBehaviour
 
     public int skillValue;
 
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
-    }
-
     void OnEnable()
     {
         Time.timeScale = 0;
@@ -78,6 +68,8 @@ public class SelectSkill : MonoBehaviour
 
     public void ButtonLeft()
     {
+        skills[skillIndex[0]].skillObject.SetActive(true);
+        
         skills[skillIndex[0]].skillLevel++;
         Debug.Log(skills[skillIndex[0]].skillName);
         skillValue = skills[skillIndex[0]].value;
@@ -87,6 +79,8 @@ public class SelectSkill : MonoBehaviour
 
     public void ButtonMiddle()
     {
+        skills[skillIndex[1]].skillObject.SetActive(true);
+        
         skills[skillIndex[1]].skillLevel++;
         Debug.Log(skills[skillIndex[1]].skillName);
         skillValue = skills[skillIndex[1]].value;
@@ -96,6 +90,8 @@ public class SelectSkill : MonoBehaviour
 
     public void ButtonRight()
     {
+        skills[skillIndex[2]].skillObject.SetActive(true);
+        
         skills[skillIndex[2]].skillLevel++;
         Debug.Log(skills[skillIndex[2]].skillName);
         skillValue = skills[skillIndex[2]].value;
@@ -105,7 +101,6 @@ public class SelectSkill : MonoBehaviour
 
     void SkillLevelUp(int value)
     {
-        Debug.Log("???????");
         switch (value)
         {
             case 0:
@@ -132,6 +127,15 @@ public class SelectSkill : MonoBehaviour
                 {
                     GameDataManager.Instance.TurretLevel++;
                     Debug.Log("터렛렙"+GameDataManager.Instance.TurretLevel);
+                }
+                break;
+            }
+            case 3:
+            {
+                if (GameDataManager.Instance.DroneLevel < 5)
+                {
+                    GameDataManager.Instance.DroneLevel++;
+                    Debug.Log("드론렙"+GameDataManager.Instance.DroneLevel);
                 }
                 break;
             }

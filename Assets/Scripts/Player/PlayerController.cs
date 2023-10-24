@@ -30,20 +30,13 @@ public class PlayerController :  MonoBehaviour
 
     public Camera followCamera;
 
-    //public int fireLevel = 1;
-    
-    enum ActiveSkillList
-    {
-        Turret
-    }
-
-    private ActiveSkillList _haveActiveSkill1;
-
     void Start()
     {
         _currentPlayerLevel = GameDataManager.Instance.PlayerLevel;
         
         _characterController = GetComponent<CharacterController>();
+
+        GameDataManager.Instance.PlayerLevel = 1;
 
         MakeBullet();
         StartCoroutine(Fire());

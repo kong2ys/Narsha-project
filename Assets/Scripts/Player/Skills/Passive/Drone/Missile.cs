@@ -2,20 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Missile : MonoBehaviour
 {
-    private Rigidbody m_rigid = null;
-    [SerializeField] private float m_speed = 0f; //맥스 속도
-    private float m_currentSpeed; // 날아가는 속도
-    private Transform m_tfTarget;
-
+    // private Rigidbody m_rigid = null;
+    [SerializeField] private float missileSpeed = 50f; //맥스 속도
+    [SerializeField] private float missileCurrentSpeed; // 날아가는 속도
+    private Transform _missileTarget;
 
     public void SearchEnemy()
     {
-        MissileLauncher missileLauncher = GameObject.Find("Launcher").GetComponent<MissileLauncher>();
-        m_tfTarget = missileLauncher._Target;
+        Drone drone = GameObject.Find("Drone").GetComponent<Drone>();
+        _missileTarget = drone.target;
     }
 
     IEnumerator LauncherDelay() //생성후 잠시 대기
@@ -36,30 +36,31 @@ public class Missile : MonoBehaviour
 
     private void OnDisable()
     {
-        m_tfTarget = null;
-        m_currentSpeed = 0f;
+        _missileTarget = null;
+        missileCurrentSpeed = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_tfTarget != null) //타겟있으면
+        if (_missileTarget != null) //타겟있으면
         {
-            if (m_currentSpeed <= m_speed) //최대 속도보다 느리면
+            if (missileCurrentSpeed <= missileSpeed) //최대 속도보다 느리면
             {
-                m_currentSpeed += m_speed * Time.deltaTime; //점점 빨라짐
+                missileCurrentSpeed += missileSpeed * Time.deltaTime; //점점 빨라짐
             }
 
-            transform.position += transform.up * m_currentSpeed * Time.deltaTime;
-            Vector3 dir = (m_tfTarget.position - transform.position).normalized; //타겟 방향
+            transform.position += transform.up * (missileCurrentSpeed * Time.deltaTime);
+            Vector3 dir = (_missileTarget.position - transform.position).normalized; //타겟 방향
             transform.up = Vector3.Lerp(transform.up, dir, 0.25f); //돌격
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Enemy"))
         {
-            m_tfTarget = null;
+            _missileTarget = null;
             gameObject.SetActive(false);
         }
     }
