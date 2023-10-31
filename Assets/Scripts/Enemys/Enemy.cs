@@ -5,60 +5,31 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Rigidbody target;
-    public float speed = 5f;
-
-    public float attackRange = 2f;
-    public float attackDeley = 1f;
-
-    private bool canAttack = true;
-    private bool isLive = true;
+    public Transform target;
+    private Vector3 _dir;
     
-    private Rigidbody rigid;
-
-    
-    
-    void Awake()
+    void Start()
     {
-        rigid = GetComponent<Rigidbody>();
+        
     }
     
-    void FixedUpdate()
+    void Update()
     {
-        if (!isLive)
-            return;
-        
-        Vector3 dirVec = target.position - rigid.position;
-        Vector3 nextVec = dirVec.normalized * (speed * Time.fixedDeltaTime);
-        rigid.MovePosition(rigid.position + nextVec);
-        rigid.velocity = Vector3.zero;
-        
-        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+        transform.LookAt(transform.position + _dir);
+        _dir = target.transform.position - transform.position;
+        _dir.Normalize();
+        transform.position += _dir * (5 * Time.deltaTime);
+    }
 
-        if (distanceToTarget <= attackRange && canAttack)
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
         {
-            StartCoroutine(Attack());
-            canAttack = false;
-            StartCoroutine(ResetAttackState());
+            Debug.Log("총알에 맞음");
+        }
+        if (other.gameObject.CompareTag("Axe"))
+        {
+            Debug.Log("도끼에 맞음");
         }
     }
-    
-    private void OnEnable() 
-    {
-        target = GameManager.instance.player.GetComponent<Rigidbody>();
-    }
-
-    IEnumerator Attack()
-    {
-        Debug.Log("공격");
-        yield return new WaitForSeconds(attackDeley);
-        // 실제 공격 코드
-    }
-
-    IEnumerator ResetAttackState()
-    {
-        yield return new WaitForSeconds(attackDeley);
-        canAttack = true;
-    }
-    
 }

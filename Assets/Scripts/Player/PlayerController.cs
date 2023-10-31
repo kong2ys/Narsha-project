@@ -133,7 +133,7 @@ public class PlayerController :  MonoBehaviour
         }
     }
 
-    public void OnDamage(int damage) // 데미지 입기
+    public void DamageAction(int damage) // 데미지 입기
     {
         GameDataManager.Instance.PlayerHp -= damage;
         Debug.Log("남은 HP : " + GameDataManager.Instance.PlayerHp);

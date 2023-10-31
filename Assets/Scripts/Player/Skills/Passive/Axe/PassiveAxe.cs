@@ -7,11 +7,11 @@ using UnityEngine;
 
 public class PassiveAxe : MonoBehaviour
 {
-    //private GameDataManager _gameData = new GameDataManager();
-    
     public Transform target;
     public GameObject[] axes;
-    
+
+    public int axeLevel = 1;
+
     public float radius;
     public float rotateSpeed;
 
@@ -19,7 +19,9 @@ public class PassiveAxe : MonoBehaviour
 
     private void Update()
     {
-        switch (GameDataManager.Instance.AxeLevel)
+        LevelUp();
+        
+        switch (axeLevel)
         {
             case 1:
             {
@@ -45,6 +47,27 @@ public class PassiveAxe : MonoBehaviour
             {
                 AxesRotate(5);
                 break;
+            }
+        }
+    }
+    
+    void LevelUp() // 이걸로 유니티 인스펙터 창에서 힘들게 직접 바꿔가며 하지 말고 P눌러 1렙 올리고 M눌러 1렙 내리셈 ㅇㅇ 단순 테스트용임 ㅇㅇ
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (axeLevel < 5)
+            {
+                axeLevel += 1;
+                Debug.Log("도끼렙" + axeLevel);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (axeLevel > 1)
+            {
+                axeLevel -= 1;
+                Debug.Log("도끼렙" + axeLevel);
             }
         }
     }
