@@ -19,22 +19,6 @@ public class CreatTurret : MonoBehaviour
     
     void Update()
     {
-        InstallationTurret();
-    }
-    
-    void MakeTurret() // 시작 시, 터렛 생성
-    {
-        _turretObjectPool = new GameObject[_turretPoolSize];
-        for (int i = 0; i < _turretPoolSize; i++)
-        {
-            GameObject turret = Instantiate(turretFactory);
-            turret.SetActive(false);
-            _turretObjectPool[i] = turret;
-        }
-    }
-    
-    void InstallationTurret()
-    {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             for (int i = 0; i < GameDataManager.Instance.TurretLevel; i++)
@@ -48,6 +32,17 @@ public class CreatTurret : MonoBehaviour
                     break;
                 }
             }
+        }
+    }
+    
+    void MakeTurret() // 시작 시, 터렛 생성
+    {
+        _turretObjectPool = new GameObject[_turretPoolSize];
+        for (int i = 0; i < _turretPoolSize; i++)
+        {
+            GameObject turret = Instantiate(turretFactory);
+            turret.SetActive(false);
+            _turretObjectPool[i] = turret;
         }
     }
 

@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
-    private GameObject[] _bombObjectPool;
     public GameObject bombFactory;
-    private int _bombPoolSize = 10;
-    private GameObject _bomb;
-    
     public GameObject bombPosition;
 
+    private GameObject[] _bombObjectPool;
+    private int _bombPoolSize = 3;  
+    private GameObject _bomb;
+
     public float bombDelay;
+    private float _fallSpeed = 20.0f;
 
     private void Start()
     {
@@ -20,35 +21,32 @@ public class Grenade : MonoBehaviour
         
         for (int i = 0; i < _bombPoolSize; i++)
         {
-            GameObject bullet = Instantiate(bombFactory);
-            bullet.SetActive(false);
-            _bombObjectPool[i] = bullet;
+            GameObject bomb = Instantiate(bombFactory);
+            bomb.SetActive(false);
+            _bombObjectPool[i] = bomb;
         }
-    }
-    
-    private void OnEnable()
-    {
-        StartCoroutine(Bomb()); // Bomb 함수를 코루틴으로 실행
     }
 
-    IEnumerator Bomb()
+    void Update()
     {
-        yield return new WaitForSeconds(bombDelay);
-        Explotion();
+        transform.position += new Vector3(0, -1, 0) * (_fallSpeed * Time.deltaTime);
     }
-    
-    void Explotion()
+
+    void OnTriggerEnter(Collider other)
     {
-        for (int i = 0; i < _bombPoolSize; i++)
+        if (other.CompareTag("Floor"))
         {
-            _bomb = _bombObjectPool[i];
-            if (_bomb.activeSelf == false)
+            for (int i = 0; i < _bombPoolSize; i++)
             {
-                _bomb.SetActive(true);
-                _bomb.transform.position = bombPosition.transform.position;
-                break;
+                _bomb = _bombObjectPool[i];
+                if (_bomb.activeSelf == false)
+                {
+                    _bomb.SetActive(true);
+                    _bomb.transform.position = bombPosition.transform.position;
+                    break;
+                }
             }
+            gameObject.SetActive(false);
         }
-        gameObject.SetActive(false);
     }
 }

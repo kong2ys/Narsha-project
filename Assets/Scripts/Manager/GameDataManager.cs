@@ -18,13 +18,13 @@ public class GameData
     
     public int axeLevel = 0;
     public int droneLevel = 0;
-    public int bombLevel = 0;
+    public int grenadeLevel = 0;
     
     // 스킬들 데미지
     public float fireDamage = 10.0f;
     
     public float turretDamage = 10.0f;
-    public float bombDamage = 10.0f;
+    public float grenadeDamage = 10.0f;
     
     public float axeDamage = 10.0f;
     public float droneDamage = 10.0f;
@@ -76,10 +76,10 @@ public class GameDataManager
         get { return _gameData.turretLevel; }
         set { _gameData.turretLevel = value; }
     }
-    public int BombLevel
+    public int GrenadeLevel
     {
-        get { return _gameData.bombLevel; }
-        set { _gameData.bombLevel = value; } 
+        get { return _gameData.grenadeLevel; }
+        set { _gameData.grenadeLevel = value; } 
     }
 
     public int AxeLevel
@@ -109,10 +109,10 @@ public class GameDataManager
         get { return _gameData.turretDamage; }
         set { _gameData.turretDamage = value; }
     }
-    public float BombDamage
+    public float GrenadeDamage
     {
-        get { return _gameData.bombDamage; }
-        set { _gameData.bombDamage = value; }
+        get { return _gameData.grenadeDamage; }
+        set { _gameData.grenadeDamage = value; }
     }
     
     public float AxeDamage
