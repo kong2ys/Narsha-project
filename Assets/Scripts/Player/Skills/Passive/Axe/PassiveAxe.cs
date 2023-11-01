@@ -10,8 +10,6 @@ public class PassiveAxe : MonoBehaviour
     public Transform target;
     public GameObject[] axes;
 
-    public int axeLevel = 1;
-
     public float radius;
     public float rotateSpeed;
 
@@ -21,7 +19,7 @@ public class PassiveAxe : MonoBehaviour
     {
         LevelUp();
         
-        switch (axeLevel)
+        switch (GameDataManager.Instance.AxeLevel)
         {
             case 1:
             {
@@ -55,19 +53,19 @@ public class PassiveAxe : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (axeLevel < 5)
+            if (GameDataManager.Instance.AxeLevel < 5)
             {
-                axeLevel += 1;
-                Debug.Log("도끼렙" + axeLevel);
+                GameDataManager.Instance.AxeLevel += 1;
+                Debug.Log("도끼렙" + GameDataManager.Instance.AxeLevel);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.U))
         {
-            if (axeLevel > 1)
+            if (GameDataManager.Instance.AxeLevel > 1)
             {
-                axeLevel -= 1;
-                Debug.Log("도끼렙" + axeLevel);
+                GameDataManager.Instance.AxeLevel -= 1;
+                Debug.Log("도끼렙" + GameDataManager.Instance.AxeLevel);
             }
         }
     }

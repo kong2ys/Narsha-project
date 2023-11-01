@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1902943c-f7a7-4f6a-a0bb-44d376450a49" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Narsha-project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/RPGTinyHeroWavePBR/Animator/SwordAndShieldStance.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RPGTinyHeroWavePBR/Animator/SwordAndShieldStance.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayerScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayerScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +16,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f712b1dc50b4468388b9c5f95d0d0eaf159e00/fa/a141d74d/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossScene/BossSceneCameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BossScene/BossScenePlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -133,7 +131,7 @@
       <workItem from="1698243294713" duration="2251000" />
       <workItem from="1698372357671" duration="597000" />
       <workItem from="1698802909514" duration="251000" />
-      <workItem from="1698821064588" duration="2171000" />
+      <workItem from="1698821064588" duration="5458000" />
     </task>
     <servers />
   </component>

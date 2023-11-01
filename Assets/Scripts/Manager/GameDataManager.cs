@@ -15,10 +15,10 @@ public class GameData
     public int fireLevel = 0;
     
     public int turretLevel = 0;
+    public int grenadeLevel = 0;
     
     public int axeLevel = 0;
     public int droneLevel = 0;
-    public int grenadeLevel = 0;
     
     // 스킬들 데미지
     public float fireDamage = 10.0f;
