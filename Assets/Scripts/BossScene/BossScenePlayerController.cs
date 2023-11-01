@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cursor = UnityEngine.Cursor;
+using Slider = UnityEngine.UIElements.Slider;
 
 public class BossScenePlayerController : MonoBehaviour
 {
@@ -10,17 +12,16 @@ public class BossScenePlayerController : MonoBehaviour
     public float moveSpeed;
     private float _gravity = -20.0f;
     private float _yVelocity = 0;
-    private bool _isJumping = false;
-    public float jumpPower = 5.0f;
     
     public float stopMove = 0;
     public float currentTime;
-    
+    public Slider hpslider;
+
     public GameObject[] attack;
     private int _attackMotion = 0;
 
-    public float attackPower = 5.0f;
-
+    public float attackPower = 40.0f;
+    public float maxhp = 200f;
     private Vector3 _dir;
     
     CharacterController _characterController;
@@ -34,6 +35,8 @@ public class BossScenePlayerController : MonoBehaviour
 
     void Update()
     {
+        float hp = GameDataManager.Instance.PlayerHp;
+        hpslider.value = (float)hp / (float)maxhp;
         if (stopMove >= 0)
         {
             float h = Input.GetAxis("Horizontal");
@@ -62,7 +65,6 @@ public class BossScenePlayerController : MonoBehaviour
             stopMove = 0;
         }
 
-        Jump();
         PlayerRotate();
         Hit();
     }
@@ -88,8 +90,8 @@ public class BossScenePlayerController : MonoBehaviour
         if (currentTime == 0 && stopMove == 0 && Input.GetMouseButton(0))
         {
             _attackMotion++;
-            stopMove = 1f;
-            currentTime = 0.5f;
+            stopMove = 0.35f;
+            currentTime = 0.25f;
             if (_attackMotion > 2)
                 _attackMotion = 0;
         }
@@ -100,24 +102,6 @@ public class BossScenePlayerController : MonoBehaviour
             attack[_attackMotion].SetActive(true);
         }
         
-    }
-
-    void Jump()
-    {
-        if (_characterController.collisionFlags == CollisionFlags.Below) // https://sshoreng.tistory.com/122
-        {
-            if (_isJumping)  
-            {
-                _isJumping = false;
-                _yVelocity = 0;
-            }
-        }
-        
-        if (Input.GetAxis("Jump") != 0 && !_isJumping)
-        {
-            _yVelocity = jumpPower;
-            _isJumping = true;
-        }
     }
 
     void PlayerRotate()

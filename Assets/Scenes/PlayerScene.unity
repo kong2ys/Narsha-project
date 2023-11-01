@@ -395,9 +395,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectSkillWindow: {fileID: 1543180528}
+  anim: {fileID: 1237418905}
   playerSpeed: 7
   gravity: -20
-  isDamaging: 0
   bulletFactory: {fileID: 4104036703790517647, guid: 7da14fe3fb48ae447b99c826d0909d60, type: 3}
   firePosition:
   - {fileID: 363074048}
@@ -1914,7 +1914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 107944979}
-  offset: {x: 0, y: 18, z: -5}
+  offset: {x: 0, y: 13, z: -3}
 --- !u!1 &965065240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2297,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7224149203388998861, guid: b419e164ab53516438da636332342da9, type: 3}
   m_PrefabInstance: {fileID: 1260201740}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1237418905 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7191100790416280148, guid: b419e164ab53516438da636332342da9, type: 3}
+  m_PrefabInstance: {fileID: 1260201740}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1260201740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2507,6 +2512,7 @@ MonoBehaviour:
   - {fileID: 1694329044}
   - {fileID: 555640090}
   - {fileID: 1963685643}
+  axeLevel: 1
   radius: 2
   rotateSpeed: 150
 --- !u!1 &1412584080
@@ -2796,19 +2802,19 @@ MonoBehaviour:
   - skillName: PlayerFire
     skillImage: {fileID: 21300000, guid: 02e1a2dfe0ffac04bb777686c245d4c6, type: 3}
     skillLevel: 0
-    weight: 0
+    weight: 100
     value: 0
     skillObject: {fileID: 107944973}
   - skillName: Axe
     skillImage: {fileID: 21300000, guid: 33e36e677d9ca824fa6df9632ab948fa, type: 3}
     skillLevel: 0
-    weight: 0
+    weight: 100
     value: 1
     skillObject: {fileID: 1356900389}
   - skillName: Drone
     skillImage: {fileID: 0}
     skillLevel: 0
-    weight: 0
+    weight: 100
     value: 2
     skillObject: {fileID: 1899744986}
   randomSkill: []

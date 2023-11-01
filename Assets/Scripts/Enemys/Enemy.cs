@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform target;
+    public GameObject target;
     private Vector3 _dir;
     
-    void Start()
+    void OnEnable()
     {
-        
+        target = GameObject.FindWithTag("Player");
     }
     
     void Update()

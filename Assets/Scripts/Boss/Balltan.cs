@@ -10,7 +10,8 @@ using Random = UnityEngine.Random; // OnDrawGizmos
 public class Balltan : MonoBehaviour
 {
     private bool _move = true;
-    public int pattern = 0;
+    public static bool isAlive = false;
+    public int pattern = -1;
     public float dash = 1.25f;
     public float currentTime;
     public float speed = 1f;
