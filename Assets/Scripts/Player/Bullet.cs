@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 
     void Shoot()
     {
-        _dir = transform.forward.normalized;
+        _dir = transform.up.normalized;
         transform.position += _dir * (speed * Time.deltaTime);
     }
 

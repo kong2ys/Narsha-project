@@ -52,6 +52,7 @@ public class CreateGrenade : MonoBehaviour
         }   
 
         yield return new WaitForSeconds(_coolTime);
+        Debug.Log("폭탄 쿨 돔 ㅇㅇ");
         _isCoolTime = false;
     }
 }

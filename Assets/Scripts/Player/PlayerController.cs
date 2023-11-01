@@ -59,9 +59,14 @@ public class PlayerController :  MonoBehaviour
             {
                 case 5 or 10 or 15 or 20 or 30:
                 {
-                    GameDataManager.Instance.TurretLevel++;
+                    GameDataManager.Instance.GrenadeLevel++;
                     
-                    _currentPlayerLevel = GameDataManager.Instance.PlayerLevel;
+                    // _currentPlayerLevel = GameDataManager.Instance.PlayerLevel;
+                    break;
+                }
+                case 10 or 20 or 30 or 40 or 50:
+                {
+                    GameDataManager.Instance.TurretLevel++;
                     break;
                 }
             }
