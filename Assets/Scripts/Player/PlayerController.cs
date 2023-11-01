@@ -12,13 +12,14 @@ public class PlayerController :  MonoBehaviour
     private int _currentPlayerLevel;
 
     CharacterController _characterController;
+    public Animator anim;
     
     public float playerSpeed = 7.0f;
     public float gravity = -20.0f;
     private float _yVelocity = 0;
-    
-    public bool isDamaging = false;
-    
+    private float _h;
+    private float _v;
+
     private Vector3 _dir;
     
     private GameObject _bullet;
@@ -33,6 +34,7 @@ public class PlayerController :  MonoBehaviour
     void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        anim = GetComponentInChildren<Animator>();
 
         GameDataManager.Instance.PlayerLevel = 1;
         GameDataManager.Instance.FireLevel = 1;
@@ -93,10 +95,19 @@ public class PlayerController :  MonoBehaviour
 
     void Move() // 이동
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        if (_h == 0f && _v == 0f) // 애니메이션
+        {
+            anim.SetBool("isWalking", false);
+        }
+        else
+        {
+            anim.SetBool("isWalking", true);
+        }
+        
+        _h = Input.GetAxis("Horizontal");
+        _v = Input.GetAxis("Vertical");
 
-        _dir = new Vector3(h, 0, v);
+        _dir = new Vector3(_h, 0, _v);
         _dir = _dir.normalized;
 
         transform.position += _dir * (playerSpeed * Time.deltaTime);

@@ -395,9 +395,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectSkillWindow: {fileID: 1543180528}
+  anim: {fileID: 1237418905}
   playerSpeed: 7
   gravity: -20
-  isDamaging: 0
   bulletFactory: {fileID: 4104036703790517647, guid: 7da14fe3fb48ae447b99c826d0909d60, type: 3}
   firePosition:
   - {fileID: 363074048}
@@ -2295,6 +2295,11 @@ Transform:
 --- !u!4 &1237418904 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7224149203388998861, guid: b419e164ab53516438da636332342da9, type: 3}
+  m_PrefabInstance: {fileID: 1260201740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1237418905 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7191100790416280148, guid: b419e164ab53516438da636332342da9, type: 3}
   m_PrefabInstance: {fileID: 1260201740}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1260201740
