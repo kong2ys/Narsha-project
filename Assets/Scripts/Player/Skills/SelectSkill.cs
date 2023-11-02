@@ -24,16 +24,6 @@ public class SelectSkill : MonoBehaviour
 
     public int skillValue;
 
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
-    }
-
     void OnEnable()
     {
         Time.timeScale = 0;
@@ -129,12 +119,23 @@ public class SelectSkill : MonoBehaviour
             }
             case 2:
             {
-                if (GameDataManager.Instance.AxeLevel < 5)
+                if (GameDataManager.Instance.DroneLevel < 5)
                 {
                     skills[2].skillObject.SetActive(true);
                     GameDataManager.Instance.DroneLevel++;
                     Debug.Log("드론렙"+GameDataManager.Instance.DroneLevel);
                 }
+                break;
+            }
+            case 3:
+            {
+                if (GameDataManager.Instance.ArrowLevel < 5)
+                {
+                    skills[3].skillObject.SetActive(true);
+                    GameDataManager.Instance.ArrowLevel++;
+                    Debug.Log("활렙"+GameDataManager.Instance.ArrowLevel);
+                }
+
                 break;
             }
         }

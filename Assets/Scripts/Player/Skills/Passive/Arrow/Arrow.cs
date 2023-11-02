@@ -1,13 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Arrow : MonoBehaviour
 {
-    public float speed;
+    private float _speed = 20.0f;
     Vector3 _dir;
-    public float bulletRange;
+    private float _arrowRange = 25.0f;
 
     GameObject _target;
     
@@ -15,20 +14,20 @@ public class Bullet : MonoBehaviour
 
     void OnEnable()
     {
-        _target = GameObject.Find("FirePosition");
+        _target = GameObject.FindWithTag("Player");
         _startPos = _target.transform.position;
         transform.rotation = _target.transform.rotation;
     }
 
     void Shoot()
     {
-        _dir = transform.up.normalized;
-        transform.position += _dir * (speed * Time.deltaTime);
+        _dir = transform.forward.normalized;
+        transform.position += _dir * (_speed * Time.deltaTime);
     }
 
     void CheckRange()
     {
-        if (Vector3.Distance(transform.position, _startPos) > bulletRange)
+        if (Vector3.Distance(transform.position, _startPos) > _arrowRange)
         {
             gameObject.SetActive(false);
         }
@@ -42,8 +41,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider enemy)
     {
-        Debug.Log("맞았다!");
+        Debug.Log("화살 맞았다!");
         gameObject.SetActive(false);
-        
     }
 }

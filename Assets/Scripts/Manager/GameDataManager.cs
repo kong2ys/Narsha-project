@@ -19,7 +19,8 @@ public class GameData
     
     public int axeLevel = 0;
     public int droneLevel = 0;
-    
+    public int arrowLevel = 0;
+
     // 스킬들 데미지
     public float fireDamage = 10.0f;
     
@@ -28,6 +29,7 @@ public class GameData
     
     public float axeDamage = 10.0f;
     public float droneDamage = 10.0f;
+    public float arrowDamage = 10.0f;
 }
 
 public class GameDataManager
@@ -85,15 +87,17 @@ public class GameDataManager
     public int AxeLevel
     {
         get { return _gameData.axeLevel; }
-        set
-        {
-            _gameData.axeLevel = value;
-        }
+        set { _gameData.axeLevel = value; }
     }
     public int DroneLevel
     {
         get { return _gameData.droneLevel; }
         set { _gameData.droneLevel = value; }
+    }
+    public int ArrowLevel
+    {
+        get { return _gameData.arrowLevel; }
+        set { _gameData.arrowLevel = value; }
     }
     
     
@@ -124,5 +128,10 @@ public class GameDataManager
     {
         get { return _gameData.droneDamage; }
         set { _gameData.droneDamage = value; }
+    }
+    public float ArrowDamage
+    {
+        get { return _gameData.arrowDamage; }
+        set { _gameData.arrowDamage = value; }
     }
 }
