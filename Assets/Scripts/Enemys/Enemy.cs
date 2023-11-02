@@ -5,31 +5,117 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public GameObject target;
-    private Vector3 _dir;
-    
-    void OnEnable()
+    public SpawnData spawnData;
+
+    public void Initialize(SpawnData data)
     {
-        target = GameObject.FindWithTag("Player");
+        spawnData = data;
     }
     
-    void Update()
+    public Rigidbody target;
+    public float speed;
+    public float health;
+    public float maxHealth;
+
+    public float attackRange = 2f;
+    public float attackDeley = 1f;
+
+    private bool canAttack = true;
+    private bool isLive;
+    
+    private Rigidbody rigid;
+    private WaitForFixedUpdate wait;
+    private Animator anim;
+    
+    void Awake()
     {
-        transform.LookAt(transform.position + _dir);
-        _dir = target.transform.position - transform.position;
-        _dir.Normalize();
-        transform.position += _dir * (5 * Time.deltaTime);
+        rigid = GetComponent<Rigidbody>();
+        wait = new WaitForFixedUpdate();
+        anim = GetComponent<Animator>();
     }
 
-    void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.gameObject.CompareTag("Bullet"))
+        maxHealth = spawnData.health;
+        speed = spawnData.speed;
+    }
+
+    void FixedUpdate()
+    {
+        if (!isLive)
+            return;
+        
+        Vector3 dirVec = target.position - rigid.position;
+        Vector3 nextVec = dirVec.normalized * (speed * Time.fixedDeltaTime);
+        rigid.MovePosition(rigid.position + nextVec);
+        rigid.velocity = Vector3.zero;
+        
+        float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+
+        if (distanceToTarget <= attackRange && canAttack)
         {
-            Debug.Log("총알에 맞음");
+            StartCoroutine(Attack());
+            canAttack = false;
+            StartCoroutine(ResetAttackState());
         }
-        if (other.gameObject.CompareTag("Axe"))
+        
+        transform.LookAt(new Vector3(target.position.x, transform.position.y, target.transform.position.z));
+        
+    }
+    
+    private void OnEnable() 
+    {
+        target = GameManager.instance.player.GetComponent<Rigidbody>();
+        isLive = true;
+        health = maxHealth;
+    }
+    
+    public void Init(SpawnData data)
+    {
+        speed = data.speed;
+        maxHealth = data.health;
+        health = data.health;
+    }
+    
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        Debug.Log(health);
+        if (health > 0)
         {
-            Debug.Log("도끼에 맞음");
+            StartCoroutine(KnokBack());
+        }
+        else
+        {
+            Debug.Log("Die");
+            Dead();
         }
     }
+
+    IEnumerator KnokBack()
+    {
+        yield return wait; // 1 frame delay
+        Vector3 playerPos = GameManager.instance.player.transform.position;
+        Vector3 dirVec = transform.position - playerPos;
+        rigid.AddForce(dirVec.normalized * 3, ForceMode.Impulse);
+    }
+
+    void Dead()
+    {
+        gameObject.SetActive(false);
+    }
+
+    IEnumerator Attack()
+    {
+        Debug.Log("공격");
+        yield return new WaitForSeconds(attackDeley);
+        // 실제 공격 코드
+    }
+
+    IEnumerator ResetAttackState()
+    {
+        yield return new WaitForSeconds(attackDeley);
+        canAttack = true;
+    }
+    
 }

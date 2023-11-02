@@ -7,15 +7,15 @@ public class PoolManager : MonoBehaviour
 {
     public GameObject[] prefabs;
 
-    private List<GameObject>[] _pools;
+    private List<GameObject>[] pools;
 
     private void Awake()
     {
-        _pools = new List<GameObject>[prefabs.Length];
+        pools = new List<GameObject>[prefabs.Length];
 
-        for (int index = 0; index < _pools.Length; index++)
+        for (int index = 0; index < pools.Length; index++)
         {
-            _pools[index] = new List<GameObject>();
+            pools[index] = new List<GameObject>();
         }
     }
     
@@ -23,7 +23,7 @@ public class PoolManager : MonoBehaviour
     {
         GameObject select = null;
 
-        foreach (GameObject item in _pools[index])
+        foreach (GameObject item in pools[index])
         {
             if (!item.activeSelf)
             {
@@ -36,7 +36,7 @@ public class PoolManager : MonoBehaviour
         if (!select)
         {
             select = Instantiate(prefabs[index], transform);
-            _pools[index].Add(select);
+            pools[index].Add(select);
         }
 
         return select;

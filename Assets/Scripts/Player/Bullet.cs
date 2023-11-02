@@ -40,10 +40,15 @@ public class Bullet : MonoBehaviour
         CheckRange();
     }
 
-    void OnTriggerEnter(Collider enemy)
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log("맞았다!");
-        gameObject.SetActive(false);
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(GameDataManager.Instance.FireDamage);
+            Debug.Log("맞았다!");
+            gameObject.SetActive(false);
+        }
         
     }
 }
