@@ -12,13 +12,10 @@ public class ArrowFire : MonoBehaviour
     public GameObject[] arrowFirePosition;
     private GameObject _arrow;
 
-    private float _attackDelay = 1.0f;
-    
     void Start()
     {
         _target = GameObject.FindWithTag("Player");
         MakeArrow();
-        StartCoroutine(Shoot());
     }
 
     void Update()
@@ -38,11 +35,26 @@ public class ArrowFire : MonoBehaviour
         }
     }
 
-    IEnumerator Shoot()
+    public void Shoot()
     {
         switch (GameDataManager.Instance.ArrowLevel)
         {
             case 1:
+            {
+                for (int j = 0; j < _poolSize; j++)
+                {
+                    _arrow = _arrowObjectPool[j];
+                    if (_arrow.activeSelf == false)
+                    {
+                        _arrow.SetActive(true);
+                        _arrow.transform.position = arrowFirePosition[1].transform.position;
+                        break;
+                    }
+                }
+
+                break;
+            }
+            case 2:
             {
                 for (int i = 1; i < 3; i++)
                 {
@@ -60,9 +72,42 @@ public class ArrowFire : MonoBehaviour
 
                 break;
             }
+            case 3:
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < _poolSize; j++)
+                    {
+                        _arrow = _arrowObjectPool[j];
+                        if (_arrow.activeSelf == false)
+                        {
+                            _arrow.SetActive(true);
+                            _arrow.transform.position = arrowFirePosition[i].transform.position;
+                            break;
+                        }
+                    }
+                }
+
+                break;
+            }
+            case 4:
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 0; j < _poolSize; j++)
+                    {
+                        _arrow = _arrowObjectPool[j];
+                        if (_arrow.activeSelf == false)
+                        {
+                            _arrow.SetActive(true);
+                            _arrow.transform.position = arrowFirePosition[i].transform.position;
+                            break;
+                        }
+                    }
+                }
+
+                break;
+            }
         }
-        
-        yield return new WaitForSeconds(_attackDelay);
-        StartCoroutine(Shoot());
     }
 }

@@ -9,11 +9,13 @@ public class GameData
 {
     public int playerLevel = 1;
     public float playerHp = 200;
+    
     public float attackDelay = 1f;
     
-    // 스킬들 레벨
     public int fireLevel = 0;
+    public float fireDamage = 10.0f;
     
+    // 스킬들 레벨
     public int turretLevel = 0;
     public int grenadeLevel = 0;
     
@@ -22,8 +24,6 @@ public class GameData
     public int arrowLevel = 0;
 
     // 스킬들 데미지
-    public float fireDamage = 10.0f;
-    
     public float turretDamage = 10.0f;
     public float grenadeDamage = 10.0f;
     
@@ -48,7 +48,7 @@ public class GameDataManager
 
     GameData _gameData = new GameData();
 
-    
+    // 플레이어
     public int PlayerLevel
     {
         get { return _gameData.playerLevel; }
@@ -64,15 +64,18 @@ public class GameDataManager
         get { return _gameData.attackDelay; }
         set { _gameData.attackDelay = value; }
     }
-    
-    
-    // 스킬 레벨
     public int FireLevel
     {
         get { return _gameData.fireLevel;  }
         set { _gameData.fireLevel = value;  }
     }
-    
+    public float FireDamage
+    {
+        get { return _gameData.fireDamage; }
+        set { _gameData.fireDamage = value; }
+    }
+
+    // 엑티브 스킬 레벨
     public int TurretLevel
     {
         get { return _gameData.turretLevel; }
@@ -84,6 +87,7 @@ public class GameDataManager
         set { _gameData.grenadeLevel = value; } 
     }
 
+    // 패시브 스킬 레벨
     public int AxeLevel
     {
         get { return _gameData.axeLevel; }
@@ -101,13 +105,7 @@ public class GameDataManager
     }
     
     
-    // 스킬 데미지
-    public float FireDamage
-    {
-        get { return _gameData.fireDamage; }
-        set { _gameData.fireDamage = value; }
-    }
-    
+    // 엑티브 스킬 데미지
     public float TurretDamage
     {
         get { return _gameData.turretDamage; }
@@ -119,6 +117,7 @@ public class GameDataManager
         set { _gameData.grenadeDamage = value; }
     }
     
+    // 패시브 스킬 데미지
     public float AxeDamage
     {
         get { return _gameData.axeDamage; }

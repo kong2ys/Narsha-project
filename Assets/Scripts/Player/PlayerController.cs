@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.Serialization;
 
 public class PlayerController :  MonoBehaviour
@@ -28,19 +29,24 @@ public class PlayerController :  MonoBehaviour
     private GameObject[] _bulletObjectPool;
     public GameObject bulletFactory;
     public GameObject[] firePosition; // 총알이 만들어질 위치
+    
+    private Camera _camera;
 
-    public Camera followCamera;
+    public ArrowFire arrowFire;
 
     void Start()
     {
+        _camera = Camera.main;
         _characterController = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
 
         GameDataManager.Instance.PlayerLevel = 1;
-        GameDataManager.Instance.FireLevel = 1;
+        GameDataManager.Instance.FireLevel = 0;
         GameDataManager.Instance.TurretLevel = 0;
         GameDataManager.Instance.AxeLevel = 0;
         GameDataManager.Instance.DroneLevel = 0;
+        GameDataManager.Instance.ArrowLevel = 0;
+        
         _currentPlayerLevel = GameDataManager.Instance.PlayerLevel;
 
         MakeBullet();
@@ -60,8 +66,6 @@ public class PlayerController :  MonoBehaviour
                 case 5 or 10 or 15 or 20 or 30:
                 {
                     GameDataManager.Instance.GrenadeLevel++;
-                    
-                    // _currentPlayerLevel = GameDataManager.Instance.PlayerLevel;
                     break;
                 }
                 case 10 or 20 or 30 or 40 or 50:
@@ -86,16 +90,14 @@ public class PlayerController :  MonoBehaviour
         }
     }
     
-    public void Turn() // 마우스 방향 회전
+    void Turn() // 마우스 방향 회전
     {
-        Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit rayHit;
-        if (Physics.Raycast(ray, out rayHit))
-        {
-            Vector3 nextvec = new Vector3(rayHit.point.x - transform.position.x, 0,
-                rayHit.point.z - transform.position.z);
-            transform.LookAt(transform.position + nextvec);
-        }
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = _camera.transform.position.y; // Y축 위치를 카메라의 Y 위치로 설정
+        Vector3 worldPos = _camera.ScreenToWorldPoint(mousePos);
+
+        Vector3 nextVec = new Vector3(worldPos.x - transform.position.x, 0, worldPos.z - transform.position.z);
+        transform.LookAt(transform.position + nextVec);
     }
 
     void Move() // 이동
@@ -154,14 +156,14 @@ public class PlayerController :  MonoBehaviour
         GameDataManager.Instance.PlayerHp -= damage;
         Debug.Log("남은 HP : " + GameDataManager.Instance.PlayerHp);
     }
-
+    
     IEnumerator Fire() // 기본 공격
     {
         switch (GameDataManager.Instance.FireLevel)
         {
             case 0:
             {
-                GameDataManager.Instance.AttackDelay = 2.0f;
+                GameDataManager.Instance.AttackDelay = 1.75f;
                 
                 for (int i = 0; i < _poolSize; i++)
                 {
@@ -275,6 +277,11 @@ public class PlayerController :  MonoBehaviour
 
                 break;
             }
+        }
+
+        if (GameDataManager.Instance.ArrowLevel >= 1)
+        {
+            arrowFire.Shoot();
         }
         
         yield return new WaitForSeconds(GameDataManager.Instance.AttackDelay);
