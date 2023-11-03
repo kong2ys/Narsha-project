@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     public void Initialize(SpawnData data)
     {
         spawnData = data;
+        speed = data.speed;
+        maxHealth = data.health;
+        health = data.health;
     }
     
     public Rigidbody target;
@@ -72,9 +75,7 @@ public class Enemy : MonoBehaviour
     
     public void Init(SpawnData data)
     {
-        speed = data.speed;
-        maxHealth = data.health;
-        health = data.health;
+        
     }
     
     public void TakeDamage(float damage)
