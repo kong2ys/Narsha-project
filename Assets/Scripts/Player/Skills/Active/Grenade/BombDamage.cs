@@ -21,17 +21,16 @@ public class BombDamage : MonoBehaviour
         
     }
     
-    IEnumerator OnTriggerEnter(Collider collision) // 사거리 내로 적이 들어왔을 때
+    void OnTriggerEnter(Collider other) // 사거리 내로 적이 들어왔을 때
     {
-        if (collision.CompareTag("Enemy") && !_isDamage)
+        if (other.CompareTag("Enemy") && !_isDamage)
         {
-            Debug.Log("폭탄 맞음 ㅇㅇ");
-            _isDamage = true;
-        }
-        else
-        {
-            yield return new WaitForSeconds(0.2f);
-            _isDamage = true;
+            Debug.Log("폭탄에 맞음 ㅇㅇ");
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(GameDataManager.Instance.GrenadeDamage);
+            }
         }
     }
 
@@ -40,6 +39,11 @@ public class BombDamage : MonoBehaviour
         if (other.CompareTag("Enemy") && !_isWkdvksDamage)
         {
             Debug.Log("장판에 지짐 ㅇㅇ");
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(GameDataManager.Instance.GrenadeDamage * 0.05f);
+            }
             _isWkdvksDamage = true;
         }
 
@@ -49,6 +53,9 @@ public class BombDamage : MonoBehaviour
 
     IEnumerator DestroyBomb() //생성후 잠시 대기
     {
+        yield return new WaitForSeconds(0.2f);
+        _isDamage = true;
+        
         yield return new WaitForSeconds(_duration);
         gameObject.SetActive(false);
     }

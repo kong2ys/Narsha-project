@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 18174774}
   m_Layer: 0
   m_Name: Floor4
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 46615920}
   m_Layer: 0
   m_Name: Floor3
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2022,7 +2022,7 @@ GameObject:
   - component: {fileID: 129637289}
   m_Layer: 0
   m_Name: Floor0
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3956,7 +3956,7 @@ GameObject:
   - component: {fileID: 391057266}
   m_Layer: 0
   m_Name: Floor2
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13202,7 +13202,7 @@ GameObject:
   - component: {fileID: 740127205}
   m_Layer: 0
   m_Name: Floor1
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13317,7 +13317,7 @@ GameObject:
   - component: {fileID: 746782081}
   m_Layer: 0
   m_Name: Floor5
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18536,7 +18536,7 @@ GameObject:
   - component: {fileID: 809484753}
   m_Layer: 0
   m_Name: Floor8
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25514,7 +25514,7 @@ GameObject:
   - component: {fileID: 967153435}
   m_Layer: 0
   m_Name: Floor6
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26431,7 +26431,7 @@ GameObject:
   - component: {fileID: 1080583977}
   m_Layer: 0
   m_Name: Floor7
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27297,7 +27297,7 @@ GameObject:
   - component: {fileID: 1119787188}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43531,7 +43531,7 @@ MonoBehaviour:
   spawnData:
   - enemyName: Bunny
     spawnTime: 0.7
-    health: 10
+    health: 100
     speed: 5
   - enemyName: Bat
     spawnTime: 0.7
