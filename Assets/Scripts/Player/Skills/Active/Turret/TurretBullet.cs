@@ -40,9 +40,15 @@ public class TurretBullet : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider enemy)
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log("맞았다!");
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(GameDataManager.Instance.TurretDamage);
+            Debug.Log("맞았다!");
+            gameObject.SetActive(false);
+        }
         gameObject.SetActive(false);
     }
 }

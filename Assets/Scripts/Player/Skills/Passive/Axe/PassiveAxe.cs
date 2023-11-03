@@ -97,4 +97,13 @@ public class PassiveAxe : MonoBehaviour
             _deg = 0;
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(GameDataManager.Instance.AxeDamage);
+        }
+    }
 }

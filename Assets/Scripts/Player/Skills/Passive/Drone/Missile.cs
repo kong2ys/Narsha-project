@@ -56,11 +56,14 @@ public class Missile : MonoBehaviour
         }
     }
     
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.CompareTag("Enemy"))
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
         {
             _missileTarget = null;
+            enemy.TakeDamage(GameDataManager.Instance.FireDamage);
+            Debug.Log("맞았다!");
             gameObject.SetActive(false);
         }
     }

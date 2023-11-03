@@ -39,9 +39,13 @@ public class Arrow : MonoBehaviour
         CheckRange();
     }
 
-    void OnTriggerEnter(Collider enemy)
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log("화살 맞았다!");
-        gameObject.SetActive(false);
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(GameDataManager.Instance.ArrowDamage);
+            gameObject.SetActive(false);
+        }
     }
 }
