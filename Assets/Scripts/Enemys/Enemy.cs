@@ -72,16 +72,11 @@ public class Enemy : MonoBehaviour
         isLive = true;
         health = maxHealth;
     }
-    
-    public void Init(SpawnData data)
-    {
-        
-    }
-    
+
     public void TakeDamage(float damage)
     {
         health -= damage;
-        Debug.Log(health);
+        Debug.Log("애니메hp "+health);
         if (health > 0)
         {
             StartCoroutine(KnokBack());

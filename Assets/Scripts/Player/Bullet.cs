@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed;
+    private float _speed = 40.0f;
     Vector3 _dir;
     public float bulletRange;
 
@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
     void Shoot()
     {
         _dir = transform.up.normalized;
-        transform.position += _dir * (speed * Time.deltaTime);
+        transform.position += _dir * (_speed * Time.deltaTime);
     }
 
     void CheckRange()
@@ -46,7 +46,6 @@ public class Bullet : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(GameDataManager.Instance.FireDamage);
-            Debug.Log("맞았다!");
             gameObject.SetActive(false);
         }
         

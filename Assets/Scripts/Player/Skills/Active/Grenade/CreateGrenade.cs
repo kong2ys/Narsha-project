@@ -13,7 +13,7 @@ public class CreateGrenade : MonoBehaviour
     private int _grenadePoolSize = 3;
 
     private bool _isCoolTime = false;
-    private float _coolTime = 10.0f;
+    private float _coolTime = 1.0f;
 
     public GameObject busterFactory;//프리팹
     public Transform busterMakePosition;//만들어질 위치

@@ -7,6 +7,9 @@ using System.IO;
 
 public class GameData
 {
+    public float maxExp = 10000;
+    public float currentExp = 0;
+    
     public int playerLevel = 1;
     public float playerHp = 200;
     
@@ -49,6 +52,16 @@ public class GameDataManager
     GameData _gameData = new GameData();
 
     // 플레이어
+    public float MaxExp
+    {
+        get { return _gameData.maxExp; }
+        set { _gameData.maxExp = value; }
+    }
+    public float CurrentExp
+    {
+        get { return _gameData.currentExp; }
+        set { _gameData.currentExp = value; }
+    }
     public int PlayerLevel
     {
         get { return _gameData.playerLevel; }
