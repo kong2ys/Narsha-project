@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class BombDamage : MonoBehaviour
 {
+    
     private bool _isDamage = false;
     private bool _isWkdvksDamage = false;
     private float _duration = 5.0f;
+    
 
     private void OnEnable()
     {
@@ -23,7 +25,7 @@ public class BombDamage : MonoBehaviour
     
     void OnTriggerEnter(Collider other) // 사거리 내로 적이 들어왔을 때
     {
-        if (other.CompareTag("Enemy") && !_isDamage)
+        if (other.CompareTag("Enemy") && !_isDamage && GameDataManager.Instance.GrenadeDamage <= 4)
         {
             Debug.Log("폭탄에 맞음 ㅇㅇ");
             Enemy enemy = other.GetComponent<Enemy>();
@@ -36,19 +38,28 @@ public class BombDamage : MonoBehaviour
 
     IEnumerator OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Enemy") && !_isWkdvksDamage)
+        if (other.CompareTag("Enemy") && GameDataManager.Instance.GrenadeDamage >= 4)
         {
-            Debug.Log("장판에 지짐 ㅇㅇ");
+            Debug.Log("갈!");
             Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(GameDataManager.Instance.GrenadeDamage * 0.05f);
-            }
-            _isWkdvksDamage = true;
+            enemy.TakeDamage(GameDataManager.Instance.GrenadeDamage * 10f);
         }
-
-        yield return new WaitForSeconds(1.0f);
-        _isWkdvksDamage = false;
+        else
+        {
+            if (other.CompareTag("Enemy") && !_isWkdvksDamage && GameDataManager.Instance.GrenadeDamage <= 4)
+            {
+                Debug.Log("장판에 지짐 ㅇㅇ");
+                Enemy enemy = other.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(GameDataManager.Instance.GrenadeDamage * 0.05f);
+                }
+                _isWkdvksDamage = true;
+            }
+        
+            yield return new WaitForSeconds(1.0f);
+            _isWkdvksDamage = false;
+        }
     }
 
     IEnumerator DestroyBomb() //생성후 잠시 대기

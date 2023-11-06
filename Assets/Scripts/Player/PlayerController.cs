@@ -66,6 +66,7 @@ public class PlayerController :  MonoBehaviour
                 case 5 or 10 or 15 or 20 or 30:
                 {
                     GameDataManager.Instance.GrenadeLevel++;
+                    Debug.Log("시발!");
                     break;
                 }
                 case 10 or 20 or 30 or 40 or 50:

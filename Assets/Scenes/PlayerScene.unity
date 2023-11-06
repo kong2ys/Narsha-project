@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.34595454, g: 0.5081604, b: 0.6467421, a: 1}
+  m_IndirectSpecularColor: {r: 0.34595773, g: 0.5081607, b: 0.64674246, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6813,6 +6813,8 @@ MonoBehaviour:
   grenadeFactory: {fileID: 5746961854272354847, guid: 39344b5fc25c46740bcad4378298e33c, type: 3}
   grenadeMakePosition: {fileID: 107944979}
   offset: {x: 0, y: 20, z: 0}
+  busterFactory: {fileID: 1514248286347088097, guid: c0a575cb509234724a10642bd8d62243, type: 3}
+  busterMakePosition: {fileID: 107944979}
 --- !u!1 &620593001
 GameObject:
   m_ObjectHideFlags: 0
