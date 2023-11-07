@@ -20,6 +20,11 @@ public class CreateGrenade : MonoBehaviour
     private GameObject _buster;//생성될 그거
     private GameObject[] _busterObjectPool;//오브젝트 풀
     private int _busterPoolSize = 3;//풀 사이즈
+    
+    public GameObject surutanFactory;//프리팹
+    private GameObject _surutan;//생성될 그거
+    private GameObject[] _surutanObjectPool;//오브젝트 풀
+    private int _surutanPoolSize = 3;//풀 사이즈
 
     void Start()
     {
@@ -39,6 +44,14 @@ public class CreateGrenade : MonoBehaviour
             buster.SetActive(false);
             _busterObjectPool[i] = buster;
         }
+
+        _surutanObjectPool = new GameObject[_surutanPoolSize];
+        for (int i = 0; i < _surutanPoolSize; i++)
+        {
+            GameObject surutan = Instantiate(surutanFactory);
+            surutan.SetActive(false);
+            _surutanObjectPool[i] = surutan;
+        }
     }
     
     void Update()
@@ -50,6 +63,25 @@ public class CreateGrenade : MonoBehaviour
         {
             MakeGrenade();
         }
+        if (Input.GetKeyDown(KeyCode.Q) && !_isCoolTime)
+        {
+            MakeBuster();
+        }
+
+        void MakeBuster()
+        {
+            for (int i = 0; i < _grenadePoolSize+1; i++) 
+            {
+                _grenade = _grenadeObjectPool[i];
+                if (_grenade.activeSelf == false)
+                {
+                    _grenade.transform.position = grenadeMakePosition.position + offset;
+                    _grenade.SetActive(true);
+                    break;
+                }
+            }
+        }
+
 
     void MakeGrenade()
     {
@@ -57,13 +89,16 @@ public class CreateGrenade : MonoBehaviour
         switch (GameDataManager.Instance.GrenadeLevel)
         {
             case 0:
-                for (int i = 0; i < _grenadePoolSize+1; i++) 
+                
+                for (int i = 0; i < _surutanPoolSize + 1; i++) 
                 {
-                    _grenade = _grenadeObjectPool[i];
-                    if (_grenade.activeSelf == false)
+                    _surutan = _surutanObjectPool[i];
+                    if (_surutan.activeSelf == false)
                     {
-                        _grenade.transform.position = grenadeMakePosition.position + offset;
-                        _grenade.SetActive(true);
+                        _surutan.transform.position = busterMakePosition.position;
+                        Rigidbody rb = _surutan.GetComponent<Rigidbody>();
+                        rb.AddForce(busterMakePosition.transform.forward * 5f, ForceMode.Impulse);
+                        _surutan.SetActive(true);
                         break;
                     }
                 }

@@ -9,6 +9,10 @@ public class BombDamage : MonoBehaviour
 
     private void OnEnable()
     {
+        if (GameDataManager.Instance.GrenadeLevel >= 1)
+        {
+            _duration = 5f;
+        }
         StartCoroutine(DestroyBomb());
     }
 
