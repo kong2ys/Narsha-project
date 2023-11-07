@@ -46,6 +46,7 @@ public class PlayerController :  MonoBehaviour
         GameDataManager.Instance.AxeLevel = 0;
         GameDataManager.Instance.DroneLevel = 0;
         GameDataManager.Instance.ArrowLevel = 0;
+        GameDataManager.Instance.MaxExp = 10000;
         
         _currentPlayerLevel = GameDataManager.Instance.PlayerLevel;
 
@@ -125,30 +126,13 @@ public class PlayerController :  MonoBehaviour
         _characterController.Move(_dir * (playerSpeed * Time.deltaTime));
     }
     
-    void LevelUp() // 이걸로 유니티 인스펙터 창에서 힘들게 직접 바꿔가며 하지 말고 P눌러 1렙 올리고 M눌러 1렙 내리셈 ㅇㅇ 단순 테스트용임 ㅇㅇ
+    void LevelUp()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (GameDataManager.Instance.CurrentExp >= GameDataManager.Instance.MaxExp)
         {
+            GameDataManager.Instance.CurrentExp = GameDataManager.Instance.MaxExp - GameDataManager.Instance.CurrentExp;
             GameDataManager.Instance.PlayerLevel++;
-            Debug.Log("플레이어렙" + GameDataManager.Instance.PlayerLevel);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (GameDataManager.Instance.FireLevel < 5)
-            {
-                GameDataManager.Instance.FireLevel += 1;
-                Debug.Log("기본발사렙" + GameDataManager.Instance.FireLevel);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            if (GameDataManager.Instance.FireLevel > 0)
-            {
-                GameDataManager.Instance.FireLevel -= 1;
-                Debug.Log("기본발사렙" + GameDataManager.Instance.FireLevel);
-            }
+            GameDataManager.Instance.MaxExp *= 1.1f;
         }
     }
 

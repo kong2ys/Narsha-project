@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("Die");
             Dead();
             GameManager.instance.kill++;
-            GameManager.instance.GetExp(exp);
+            GameDataManager.Instance.CurrentExp += exp;
         }
     }
 

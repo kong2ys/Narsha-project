@@ -7,7 +7,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     public GameObject[] mappingObj;     // 9개 타일 오브젝트
-    public GameObject pence;            // 발탄 보스전 구조물 오브젝트
+    public GameObject fance;            // 발탄 보스전 구조물 오브젝트
     public GameObject castle;           // boss2 보스전 구조물 오브젝트
     public GameObject player;           // player 오브젝트
     // public GameObject balltan;          // 발탄 오브젝트
@@ -29,7 +29,7 @@ public class MapManager : MonoBehaviour
     // private Balltan _balltanScript;      // 발탄 스크립트 참조
     // private Boss2 _boss2Script;          // boss2 스크립트 참조
 
-    // private bool _isPence = false;       // pence 등장 상태 플래그
+    // private bool _isPence = false;       // fance 등장 상태 플래그
     // private bool _isCastle = false;      // castle 등장 상태 플래그
     
     private void Start()
@@ -99,7 +99,7 @@ public class MapManager : MonoBehaviour
         mappingObj[0].gameObject.transform.position += new Vector3(0, 0, _movePos);
         mappingObj[1].gameObject.transform.position += new Vector3(0, 0, _movePos);
         mappingObj[2].gameObject.transform.position += new Vector3(0, 0, _movePos);
-        pence.gameObject.transform.position += new Vector3(0, 0, tileSize);
+        fance.gameObject.transform.position += new Vector3(0, 0, tileSize);
         castle.gameObject.transform.position += new Vector3(0, 0, tileSize);
     }
     
@@ -111,7 +111,7 @@ public class MapManager : MonoBehaviour
         mappingObj[6].gameObject.transform.position += new Vector3(0, 0, -_movePos);
         mappingObj[7].gameObject.transform.position += new Vector3(0, 0, -_movePos);
         mappingObj[8].gameObject.transform.position += new Vector3(0, 0, -_movePos);
-        pence.gameObject.transform.position += new Vector3(0, 0, -tileSize);
+        fance.gameObject.transform.position += new Vector3(0, 0, -tileSize);
         castle.gameObject.transform.position += new Vector3(0, 0, -tileSize);
     }
 
@@ -123,7 +123,7 @@ public class MapManager : MonoBehaviour
         mappingObj[2].gameObject.transform.position += new Vector3(_movePos, 0, 0);
         mappingObj[5].gameObject.transform.position += new Vector3(_movePos, 0, 0);
         mappingObj[8].gameObject.transform.position += new Vector3(_movePos, 0, 0);
-        pence.gameObject.transform.position += new Vector3(tileSize, 0, 0);
+        fance.gameObject.transform.position += new Vector3(tileSize, 0, 0);
         castle.gameObject.transform.position += new Vector3(tileSize, 0, 0);
     }
 
@@ -135,7 +135,7 @@ public class MapManager : MonoBehaviour
         mappingObj[0].gameObject.transform.position += new Vector3(-_movePos, 0, 0);
         mappingObj[3].gameObject.transform.position += new Vector3(-_movePos, 0, 0);
         mappingObj[6].gameObject.transform.position += new Vector3(-_movePos, 0, 0);
-        pence.gameObject.transform.position += new Vector3(-tileSize, 0, 0);
+        fance.gameObject.transform.position += new Vector3(-tileSize, 0, 0);
         castle.gameObject.transform.position += new Vector3(-tileSize, 0, 0);
     }
     
