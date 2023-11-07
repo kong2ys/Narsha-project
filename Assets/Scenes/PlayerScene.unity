@@ -25985,8 +25985,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c7600cc1f268940a691edac6407189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnData:
+    enemyName: 
+    spawnTime: 0
+    health: 0
+    speed: 0
+    creatureExp: 0
   gameTime: 0
   maxGameTime: 200
+  level: 0
+  kill: 0
+  exp: 0
   pool: {fileID: 1171550594}
   player: {fileID: 107944974}
 --- !u!4 &1169638839
@@ -39811,14 +39820,17 @@ MonoBehaviour:
     spawnTime: 0.7
     health: 10
     speed: 5
+    creatureExp: 1
   - enemyName: Bat
     spawnTime: 0.7
     health: 20
     speed: 5
+    creatureExp: 2
   - enemyName: Mushroom
     spawnTime: 0.7
     health: 30
     speed: 3
+    creatureExp: 3
 --- !u!1 &2131516352
 GameObject:
   m_ObjectHideFlags: 0

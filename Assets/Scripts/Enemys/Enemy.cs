@@ -13,12 +13,14 @@ public class Enemy : MonoBehaviour
         speed = data.speed;
         maxHealth = data.health;
         health = data.health;
+        exp = data.creatureExp;
     }
     
     public Rigidbody target;
     public float speed;
     public float health;
     public float maxHealth;
+    public int exp;
 
     public float attackRange = 2f;
     public float attackDeley = 1f;
@@ -36,13 +38,7 @@ public class Enemy : MonoBehaviour
         wait = new WaitForFixedUpdate();
         anim = GetComponent<Animator>();
     }
-
-    private void Start()
-    {
-        maxHealth = spawnData.health;
-        speed = spawnData.speed;
-    }
-
+    
     void FixedUpdate()
     {
         if (!isLive)
@@ -75,8 +71,14 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (!isLive)
+        {
+            return;
+        }
+        
         health -= damage;
         Debug.Log("애니메hp "+health);
+        
         if (health > 0)
         {
             StartCoroutine(KnokBack());
@@ -85,6 +87,8 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("Die");
             Dead();
+            GameManager.instance.kill++;
+            GameManager.instance.GetExp(exp);
         }
     }
 
