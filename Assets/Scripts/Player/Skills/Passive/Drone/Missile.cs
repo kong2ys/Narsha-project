@@ -56,9 +56,15 @@ public class Missile : MonoBehaviour
         }
     }
     
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
+        Enemy enemy = other.gameObject.GetComponent<Enemy>();
+        
+        if (enemy == null)
+        {
+            return;
+        }
+        
         if (enemy != null)
         {
             _missileTarget = null;

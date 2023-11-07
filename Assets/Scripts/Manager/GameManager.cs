@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public GameDataManager gmd;
     
     public SpawnData spawnData;
     
@@ -17,7 +18,7 @@ public class GameManager : MonoBehaviour
     [Header("# Player Info")]
     public int level;
     public int kill;
-    public int exp;
+    public float exp;
     
     [Header("# Game Object")]
     public PoolManager pool;
@@ -36,10 +37,9 @@ public class GameManager : MonoBehaviour
         {
             gameTime = maxGameTime;
         }
-    }
-
-    public void GetExp(int creatExp)
-    {
+        
+        exp = GameDataManager.Instance.CurrentExp;
         
     }
+    
 }
