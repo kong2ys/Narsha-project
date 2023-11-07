@@ -7,7 +7,11 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     public GameObject[] mappingObj;     // 9개 타일 오브젝트
+    public GameObject pence;            // 발탄 보스전 구조물 오브젝트
+    public GameObject castle;           // boss2 보스전 구조물 오브젝트
     public GameObject player;           // player 오브젝트
+    // public GameObject balltan;          // 발탄 오브젝트
+    // public GameObject boss2;            // boss2 오브젝트
     public float tileSize;              // 타일 1개 길이
 
     private float _dirFront;     // 앞 타일 거리
@@ -19,6 +23,15 @@ public class MapManager : MonoBehaviour
     private float _posZ;         // 플레이어 오브젝트 z값 위치
     private float _movePos;      // 타일 이동값
 
+    // private bool _isBalltanLive;         // 발탄 생존 여부 플래그
+    // private bool _isBoss2Live;           // boss2 생존 여부 플래그
+
+    // private Balltan _balltanScript;      // 발탄 스크립트 참조
+    // private Boss2 _boss2Script;          // boss2 스크립트 참조
+
+    // private bool _isPence = false;       // pence 등장 상태 플래그
+    // private bool _isCastle = false;      // castle 등장 상태 플래그
+    
     private void Start()
     {
         _dirFront = tileSize / 2;
@@ -27,10 +40,23 @@ public class MapManager : MonoBehaviour
         _dirLeft = tileSize / 2 * -1;
 
         _movePos = tileSize * 3;     // 3 * 3 타일 => 타일 세 칸 넓이 이동
+        
+        // Balltan _balltanScript = balltan.GetComponent<Balltan>();
+        // Boss2 _boss2Script = boss2.GetComponent<Boss2>();
     }
     
     void Update()
     {
+        // 보스 생존 플래그 설정
+        // _isBalltanLive = _balltanScript.isAlive;
+        // _isBoss2Live = _boss2Script.isAlive;
+        
+        // 보스 생존 시 맵 이동 제한
+        // if (_isBalltanLive||_isBoss2Live)
+        // {
+        //     return;
+        // }
+        
         _posX = player.gameObject.transform.position.x;
         _posZ = player.gameObject.transform.position.z;
         
@@ -73,6 +99,8 @@ public class MapManager : MonoBehaviour
         mappingObj[0].gameObject.transform.position += new Vector3(0, 0, _movePos);
         mappingObj[1].gameObject.transform.position += new Vector3(0, 0, _movePos);
         mappingObj[2].gameObject.transform.position += new Vector3(0, 0, _movePos);
+        pence.gameObject.transform.position += new Vector3(0, 0, tileSize);
+        castle.gameObject.transform.position += new Vector3(0, 0, tileSize);
     }
     
     void BackMoveMap()
@@ -83,6 +111,8 @@ public class MapManager : MonoBehaviour
         mappingObj[6].gameObject.transform.position += new Vector3(0, 0, -_movePos);
         mappingObj[7].gameObject.transform.position += new Vector3(0, 0, -_movePos);
         mappingObj[8].gameObject.transform.position += new Vector3(0, 0, -_movePos);
+        pence.gameObject.transform.position += new Vector3(0, 0, -tileSize);
+        castle.gameObject.transform.position += new Vector3(0, 0, -tileSize);
     }
 
     void RightMoveMap()
@@ -93,6 +123,8 @@ public class MapManager : MonoBehaviour
         mappingObj[2].gameObject.transform.position += new Vector3(_movePos, 0, 0);
         mappingObj[5].gameObject.transform.position += new Vector3(_movePos, 0, 0);
         mappingObj[8].gameObject.transform.position += new Vector3(_movePos, 0, 0);
+        pence.gameObject.transform.position += new Vector3(tileSize, 0, 0);
+        castle.gameObject.transform.position += new Vector3(tileSize, 0, 0);
     }
 
     void LeftMoveMap()
@@ -103,15 +135,20 @@ public class MapManager : MonoBehaviour
         mappingObj[0].gameObject.transform.position += new Vector3(-_movePos, 0, 0);
         mappingObj[3].gameObject.transform.position += new Vector3(-_movePos, 0, 0);
         mappingObj[6].gameObject.transform.position += new Vector3(-_movePos, 0, 0);
+        pence.gameObject.transform.position += new Vector3(-tileSize, 0, 0);
+        castle.gameObject.transform.position += new Vector3(-tileSize, 0, 0);
     }
     
     void Swap(GameObject[] mapTile, int i, int j, int k)
     {
-        // 오른쪽 이동 시 맨 윗줄 타일이 [0][1][2] -> [1][2][0]으로 변경되는 방식
+        // ex) 오른쪽 이동 시 맨 윗줄 타일이 [0][1][2] -> [1][2][0]으로 변경되는 방식
         
         GameObject test = mapTile[i];
         mapTile[i] = mapTile[j];
         mapTile[j] = mapTile[k];
         mapTile[k] = test;
     }
+    
+    
+    
 }
