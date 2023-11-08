@@ -109,11 +109,11 @@ public class SelectSkill : MonoBehaviour
             }
             case 1:
             {
-                if (GameDataManager.Instance.AxeLevel < 5)
+                if (GameDataManager.Instance.FireBallLevel < 5)
                 {
                     skills[1].skillObject.SetActive(true);
-                    GameDataManager.Instance.AxeLevel++;
-                    Debug.Log("도끼렙"+GameDataManager.Instance.AxeLevel);
+                    GameDataManager.Instance.FireBallLevel++;
+                    Debug.Log("불알(파이어볼)렙"+GameDataManager.Instance.FireBallLevel);
                 }
                 break;
             }

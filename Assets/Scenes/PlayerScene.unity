@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.34595773, g: 0.5081607, b: 0.64674246, a: 1}
+  m_IndirectSpecularColor: {r: 0.34595454, g: 0.5081604, b: 0.6467421, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1498,7 +1498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095810855686646309, guid: f6b3250c329934e4496360c8d196bc6d, type: 3}
       propertyPath: m_Name
-      value: Axe
+      value: FireBall
       objectReference: {fileID: 0}
     - target: {fileID: 7095810855686646309, guid: f6b3250c329934e4496360c8d196bc6d, type: 3}
       propertyPath: m_Layer
@@ -2241,7 +2241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095810855686646309, guid: f6b3250c329934e4496360c8d196bc6d, type: 3}
       propertyPath: m_Name
-      value: Axe
+      value: FireBall
       objectReference: {fileID: 0}
     - target: {fileID: 7095810855686646309, guid: f6b3250c329934e4496360c8d196bc6d, type: 3}
       propertyPath: m_Layer
@@ -5137,7 +5137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095810855686646309, guid: f6b3250c329934e4496360c8d196bc6d, type: 3}
       propertyPath: m_Name
-      value: Axe
+      value: FireBall
       objectReference: {fileID: 0}
     - target: {fileID: 7095810855686646309, guid: f6b3250c329934e4496360c8d196bc6d, type: 3}
       propertyPath: m_Layer
@@ -32257,7 +32257,7 @@ GameObject:
   - component: {fileID: 1356900391}
   - component: {fileID: 1356900392}
   m_Layer: 13
-  m_Name: Axes
+  m_Name: FireBall
   m_TagString: Axe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32295,15 +32295,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb72affe45fd43c7ba273926882380a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   target: {fileID: 107944979}
-  axes:
+  fireBall:
   - {fileID: 33831882}
   - {fileID: 739877485}
   - {fileID: 1694329044}
   - {fileID: 555640090}
   - {fileID: 1963685643}
-  radius: 2
-  rotateSpeed: 150
+  iceBall: []
+  poisonBall: []
 --- !u!54 &1356900392
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37850,7 +37851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095810855686646309, guid: f6b3250c329934e4496360c8d196bc6d, type: 3}
       propertyPath: m_Name
-      value: Axe
+      value: FireBall
       objectReference: {fileID: 0}
     - target: {fileID: 7095810855686646309, guid: f6b3250c329934e4496360c8d196bc6d, type: 3}
       propertyPath: m_Layer
@@ -38097,7 +38098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7095810855686646309, guid: f6b3250c329934e4496360c8d196bc6d, type: 3}
       propertyPath: m_Name
-      value: Axe
+      value: FireBall
       objectReference: {fileID: 0}
     - target: {fileID: 7095810855686646309, guid: f6b3250c329934e4496360c8d196bc6d, type: 3}
       propertyPath: m_Layer

@@ -7,6 +7,8 @@ using System.IO;
 
 public class GameData
 {
+    public int haveGold = 0;
+    
     public float maxExp = 10000;
     public float currentExp = 0;
     
@@ -22,7 +24,9 @@ public class GameData
     public int turretLevel = 0;
     public int grenadeLevel = 0;
     
-    public int axeLevel = 0;
+    public int fireBallLevel = 0;
+    public int iceBallLevel = 0;
+    public int poisonBallLevel = 0;
     public int droneLevel = 0;
     public int arrowLevel = 0;
     public int iceLevel = 0;
@@ -31,7 +35,9 @@ public class GameData
     public float turretDamage = 10.0f;
     public float grenadeDamage = 10.0f;
     
-    public float axeDamage = 10.0f;
+    public float fireBallDamage = 10.0f;
+    public float iceBallDamage = 10.0f;
+    public float poisonBallDamage = 10.0f;
     public float droneDamage = 10.0f;
     public float arrowDamage = 10.0f;
 }
@@ -53,6 +59,11 @@ public class GameDataManager
     GameData _gameData = new GameData();
 
     // 플레이어
+    public int HaveGold
+    {
+        get { return _gameData.haveGold; }
+        set { _gameData.haveGold = value; }
+    }
     public float MaxExp
     {
         get { return _gameData.maxExp; }
@@ -102,10 +113,20 @@ public class GameDataManager
     }
 
     // 패시브 스킬 레벨
-    public int AxeLevel
+    public int FireBallLevel
     {
-        get { return _gameData.axeLevel; }
-        set { _gameData.axeLevel = value; }
+        get { return _gameData.fireBallLevel; }
+        set { _gameData.fireBallLevel = value; }
+    }
+    public int IceBallLevel
+    {
+        get { return _gameData.iceBallLevel; }
+        set { _gameData.iceBallLevel = value; }
+    }
+    public int PoisonBallLevel
+    {
+        get { return _gameData.poisonBallLevel; }
+        set { _gameData.poisonBallLevel = value; }
     }
     public int DroneLevel
     {
@@ -136,10 +157,20 @@ public class GameDataManager
     }
     
     // 패시브 스킬 데미지
-    public float AxeDamage
+    public float FireBallDamage
     {
-        get { return _gameData.axeDamage; }
-        set { _gameData.axeDamage = value; }
+        get { return _gameData.fireBallDamage; }
+        set { _gameData.fireBallDamage = value; }
+    }
+    public float IceBallDamage
+    {
+        get { return _gameData.iceBallDamage; }
+        set { _gameData.iceBallDamage = value; }
+    }
+    public float PoisonBallDamage
+    {
+        get { return _gameData.poisonBallDamage; }
+        set { _gameData.poisonBallDamage = value; }
     }
     public float DroneDamage
     {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5436286458948081170}
   - component: {fileID: 8807519001608701429}
   m_Layer: 0
-  m_Name: Axe
+  m_Name: FireBall
   m_TagString: Axe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

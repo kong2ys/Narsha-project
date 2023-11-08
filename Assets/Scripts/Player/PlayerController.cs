@@ -43,9 +43,12 @@ public class PlayerController :  MonoBehaviour
         GameDataManager.Instance.PlayerLevel = 1;
         GameDataManager.Instance.FireLevel = 0;
         GameDataManager.Instance.TurretLevel = 0;
-        GameDataManager.Instance.AxeLevel = 0;
+        GameDataManager.Instance.GrenadeLevel = 0;
+        GameDataManager.Instance.FireBallLevel = 0;
         GameDataManager.Instance.DroneLevel = 0;
         GameDataManager.Instance.ArrowLevel = 0;
+        GameDataManager.Instance.IceLevel = 0;
+        GameDataManager.Instance.CurrentExp = 0;
         GameDataManager.Instance.MaxExp = 10000;
         
         _currentPlayerLevel = GameDataManager.Instance.PlayerLevel;
