@@ -24,7 +24,7 @@ public class iceage : MonoBehaviour
             Debug.Log("됐냐?"+enemy.speed);
         }
     }
-
+    
     private void OnTriggerExit(Collider other)
     {
         Enemy enemy1 = other.GetComponent<Enemy>();
