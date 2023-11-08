@@ -138,6 +138,17 @@ public class SelectSkill : MonoBehaviour
 
                 break;
             }
+            case 4:
+            {
+                if (GameDataManager.Instance.IceLevel < 5)//게임데이터매니저에서 레벨추가
+                {
+                    skills[4].skillObject.SetActive(true);
+                    GameDataManager.Instance.IceLevel++;
+                    Debug.Log("아에~!"+GameDataManager.Instance.IceLevel);
+                }
+                
+                break;
+            }
         }
     }
 

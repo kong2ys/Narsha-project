@@ -96,8 +96,8 @@ public class CreateGrenade : MonoBehaviour
                     if (_surutan.activeSelf == false)
                     {
                         _surutan.transform.position = busterMakePosition.position;
-                        Rigidbody rb = _surutan.GetComponent<Rigidbody>();
-                        rb.AddForce(busterMakePosition.transform.forward * 5f, ForceMode.Impulse);
+                        // Rigidbody rb = _surutan.GetComponent<Rigidbody>();
+                        // rb.AddForce(busterMakePosition.transform.forward * 5f, ForceMode.Impulse);
                         _surutan.SetActive(true);
                         break;
                     }

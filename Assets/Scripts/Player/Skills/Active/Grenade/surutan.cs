@@ -12,7 +12,10 @@ public class surutan : MonoBehaviour
     private GameObject[] _surutanObjectPool;
     private int _surutanPoolSize = 3;  
     private GameObject _surutan;
-    public float throwPower = 3f;
+
+
+    public GameObject ball; // 오브젝트 (공 또는 다른 오브젝트)
+    public float force = 10.0f; // 가할 힘의 크기
     
     
     public GameObject madePosition;
@@ -46,10 +49,17 @@ public class surutan : MonoBehaviour
 
     private void OnEnable()
     {
+        if (ball != null)
+        {
+            // 오브젝트에 힘을 가하기 위해 위치를 이동합니다.
+            Vector3 forceDirection = transform.forward; // 앞 방향으로 힘을 가하려면 transform.forward를 사용합니다.
+            Vector3 thowfower = forceDirection * force;
+            ball.transform.position += thowfower * Time.deltaTime;
+        }
         
-        StartCoroutine(DamagSurutan());
+        StartCoroutine(DamageSurutan());
     }
-    IEnumerator DamagSurutan() //생성후 잠시 대기
+    IEnumerator DamageSurutan() //생성후 잠시 대기
     {
         yield return new WaitForSeconds(3f);
         gal();

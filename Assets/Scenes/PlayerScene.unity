@@ -6044,7 +6044,7 @@ MonoBehaviour:
   grenadeMakePosition: {fileID: 107944979}
   offset: {x: 0, y: 20, z: 0}
   busterFactory: {fileID: 1514248286347088097, guid: c0a575cb509234724a10642bd8d62243, type: 3}
-  busterMakePosition: {fileID: 107944979}
+  busterMakePosition: {fileID: 1198807440}
   surutanFactory: {fileID: 2643664815211236470, guid: 890d89b665ff24e33a1dbce9ae73aa51, type: 3}
 --- !u!1 &620593001
 GameObject:
@@ -26788,6 +26788,7 @@ Transform:
   - {fileID: 1356900390}
   - {fileID: 1899744987}
   - {fileID: 1702317220}
+  - {fileID: 1602092492}
   m_Father: {fileID: 81280963}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -34008,6 +34009,12 @@ MonoBehaviour:
     weight: 100
     value: 3
     skillObject: {fileID: 1702317219}
+  - skillName: IceAge
+    skillImage: {fileID: 0}
+    skillLevel: 0
+    weight: 100
+    value: 4
+    skillObject: {fileID: 1602092490}
   randomSkill: []
   skillValue: 0
 --- !u!114 &1543180530
@@ -34532,6 +34539,50 @@ Transform:
   - {fileID: 500013223}
   m_Father: {fileID: 967153434}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1602092490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1602092492}
+  - component: {fileID: 1602092491}
+  m_Layer: 13
+  m_Name: IceAge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1602092491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602092490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3c810d3955046af9ae84f5c815a6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1602092492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602092490}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1198962677}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1622383928
 GameObject:

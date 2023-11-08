@@ -25,6 +25,7 @@ public class GameData
     public int axeLevel = 0;
     public int droneLevel = 0;
     public int arrowLevel = 0;
+    public int iceLevel = 0;
 
     // 스킬들 데미지
     public float turretDamage = 10.0f;
@@ -116,7 +117,11 @@ public class GameDataManager
         get { return _gameData.arrowLevel; }
         set { _gameData.arrowLevel = value; }
     }
-    
+    public int IceLevel
+    {
+        get { return _gameData.iceLevel; }
+        set { _gameData.iceLevel = value; }
+    }
     
     // 엑티브 스킬 데미지
     public float TurretDamage

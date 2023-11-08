@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -43,7 +44,6 @@ public class Enemy : MonoBehaviour
     {
         if (!isLive)
             return;
-        
         Vector3 dirVec = target.position - rigid.position;
         Vector3 nextVec = dirVec.normalized * (speed * Time.fixedDeltaTime);
         rigid.MovePosition(rigid.position + nextVec);
