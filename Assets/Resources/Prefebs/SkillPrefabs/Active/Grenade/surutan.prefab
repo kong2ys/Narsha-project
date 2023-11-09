@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2643664815211236468}
   - component: {fileID: 2643664815211236469}
   - component: {fileID: 2643664815211236464}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: surutan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,8 @@ MonoBehaviour:
   surutanFactory: {fileID: 3341058161891515125, guid: 862aacb032727cf439a5f82004e75a1a, type: 3}
   sututanPosition: {fileID: 2643664815211236470}
   offset: {x: 0, y: 0, z: 0}
-  throwPower: 3
+  ball: {fileID: 0}
+  force: 10
   madePosition: {fileID: 0}
 --- !u!54 &2643664815211236464
 Rigidbody:

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.34595454, g: 0.5081604, b: 0.6467421, a: 1}
+  m_IndirectSpecularColor: {r: 0.34595773, g: 0.5081607, b: 0.64674246, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2426,6 +2426,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6b3250c329934e4496360c8d196bc6d, type: 3}
+--- !u!1 &198219388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198219390}
+  - component: {fileID: 198219389}
+  m_Layer: 13
+  m_Name: swordShield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &198219389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198219388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7894a467f5e4b79a9a3fe7fa60dd39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shieldPrefeb: {fileID: 902257605523310763, guid: be3b364d994014c5cb48659c321050fc, type: 3}
+  _duration: 5
+  _coolTime: 5
+--- !u!4 &198219390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198219388}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1198962677}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &205968790
 GameObject:
   m_ObjectHideFlags: 0
@@ -27420,6 +27467,7 @@ Transform:
   - {fileID: 1899744987}
   - {fileID: 1702317220}
   - {fileID: 1602092492}
+  - {fileID: 198219390}
   m_Father: {fileID: 81280963}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -34807,6 +34855,12 @@ MonoBehaviour:
     weight: 100
     value: 6
     skillObject: {fileID: 36260861}
+  - skillName: SwordShield
+    skillImage: {fileID: 0}
+    skillLevel: 0
+    weight: 100
+    value: 7
+    skillObject: {fileID: 198219388}
   randomSkill: []
   skillValue: 0
 --- !u!114 &1543180530

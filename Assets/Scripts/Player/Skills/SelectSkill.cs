@@ -171,6 +171,17 @@ public class SelectSkill : MonoBehaviour
                 
                 break;
             }
+            case 7: // 검방패
+            {
+                if (GameDataManager.Instance.SwordShieldLevel < 5)//게임데이터매니저에서 레벨추가
+                {
+                    skills[7].skillObject.SetActive(true);
+                    GameDataManager.Instance.SwordShieldLevel++;
+                    Debug.Log("검방패"+GameDataManager.Instance.SwordShieldLevel);
+                }
+                
+                break;
+            }
         }
     }
 

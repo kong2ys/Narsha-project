@@ -178,7 +178,6 @@ public class CircleBall : MonoBehaviour
                         var z = _radius[index] * Mathf.Cos(rad) * -1;
 
                         iceBall[i].transform.position = target.transform.position + new Vector3(x, 0, -z);
-                        Debug.Log(iceBall[i].transform.position);
                         iceBall[i].transform.rotation = Quaternion.Euler(90, 0, -(_deg + (i * rotationSize)) * -1);
                     }
                 }
