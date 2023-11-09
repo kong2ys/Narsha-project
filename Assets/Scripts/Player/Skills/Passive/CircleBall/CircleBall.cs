@@ -17,7 +17,7 @@ public class CircleBall : MonoBehaviour
     public GameObject[] poisonBall;
 
     private float[] _radius = {2, 5, 8};
-    private float[]  _rotateSpeed = {150, 100, 50};
+    private float[]  _rotateSpeed = {150, 100, 80};
 
     private float _deg;
 
@@ -149,9 +149,9 @@ public class CircleBall : MonoBehaviour
                         var rotationSize = 360 / num;
                         var rad = Mathf.Deg2Rad * (_deg + (i * rotationSize));
                         var x = _radius[index] * Mathf.Sin(rad);
-                        var y = _radius[index] * Mathf.Cos(rad);
+                        var z = _radius[index] * Mathf.Cos(rad);
 
-                        fireBall[i].transform.position = target.transform.position + new Vector3(x, 0, y);
+                        fireBall[i].transform.position = target.transform.position + new Vector3(x, 0, z);
                         fireBall[i].transform.rotation = Quaternion.Euler(90, 0, (_deg + (i * rotationSize)) * -1);
                     }
                 }
@@ -174,11 +174,12 @@ public class CircleBall : MonoBehaviour
 
                         var rotationSize = 360 / num;
                         var rad = Mathf.Deg2Rad * (_deg + (i * rotationSize));
-                        var x = _radius[index] * Mathf.Sin(rad);
-                        var y = _radius[index] * Mathf.Cos(rad);
+                        var x = _radius[index] * Mathf.Sin(rad) * -1;
+                        var z = _radius[index] * Mathf.Cos(rad) * -1;
 
-                        iceBall[i].transform.position = target.transform.position + new Vector3(x, 0, y);
-                        iceBall[i].transform.rotation = Quaternion.Euler(90, 0, (_deg + (i * rotationSize)) * -1);
+                        iceBall[i].transform.position = target.transform.position + new Vector3(x, 0, -z);
+                        Debug.Log(iceBall[i].transform.position);
+                        iceBall[i].transform.rotation = Quaternion.Euler(90, 0, -(_deg + (i * rotationSize)) * -1);
                     }
                 }
                 else
@@ -201,9 +202,9 @@ public class CircleBall : MonoBehaviour
                         var rotationSize = 360 / num;
                         var rad = Mathf.Deg2Rad * (_deg + (i * rotationSize));
                         var x = _radius[index] * Mathf.Sin(rad);
-                        var y = _radius[index] * Mathf.Cos(rad);
+                        var z = _radius[index] * Mathf.Cos(rad);
 
-                        poisonBall[i].transform.position = target.transform.position + new Vector3(x, 0, y);
+                        poisonBall[i].transform.position = target.transform.position + new Vector3(x, 0, z);
                         poisonBall[i].transform.rotation = Quaternion.Euler(90, 0, (_deg + (i * rotationSize)) * -1);
                     }
                 }
