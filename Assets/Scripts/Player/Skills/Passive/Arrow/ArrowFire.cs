@@ -21,6 +21,7 @@ public class ArrowFire : MonoBehaviour
     void Update()
     {
         transform.position = _target.transform.position;
+        transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
         transform.rotation = _target.transform.rotation;
     }
     

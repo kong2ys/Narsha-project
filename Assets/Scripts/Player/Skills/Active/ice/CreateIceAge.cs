@@ -15,10 +15,8 @@ public class CreateIceAge : MonoBehaviour
     private bool _isCoolTime = true;
     public float _coolTime = 15.0f;
     
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
         _iceObjectPool = new GameObject[_icePoolSize];
         for (int i = 0; i < _icePoolSize; i++)
         {
@@ -28,21 +26,13 @@ public class CreateIceAge : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
-        StartCoroutine(cooltime());
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        // 이 부분을 제거합니다.
+        StartCoroutine(CoolTime());
     }
 
     void MakeIceAge()
     {
-        
         for (int i = 0; i < _icePoolSize; i++) 
         {
             _ice = _iceObjectPool[i];
@@ -55,12 +45,10 @@ public class CreateIceAge : MonoBehaviour
         }
     }
 
-    IEnumerator cooltime()
+    IEnumerator CoolTime()
     {
-        while(true)
-        {
-            yield return new WaitForSeconds(_coolTime);
-            MakeIceAge();
-        }
+        MakeIceAge();
+        yield return new WaitForSeconds(_coolTime);
+        CoolTime();
     }
 }

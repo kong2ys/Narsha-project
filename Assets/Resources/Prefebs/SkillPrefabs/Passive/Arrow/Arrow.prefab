@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 6772574264512535274}
   - component: {fileID: -5977975618093741700}
   m_Layer: 12
-  m_Name: Arrows
+  m_Name: Arrow
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,8 +177,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3903983038984033716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.079, z: 2.677}
-  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6738686067435005979}
@@ -234,7 +234,7 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.02
-  m_Height: 1.5
+  m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.49}
 --- !u!54 &-5977975618093741700
