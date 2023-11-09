@@ -97,7 +97,7 @@ public class SelectSkill : MonoBehaviour
     {
         switch (value)
         {
-            case 0:
+            case 0: // 기본 공격
             {
                 if (GameDataManager.Instance.FireLevel < 5)
                 {
@@ -107,7 +107,7 @@ public class SelectSkill : MonoBehaviour
                 }
                 break;
             }
-            case 1:
+            case 1: // 파이어볼
             {
                 if (GameDataManager.Instance.FireBallLevel < 5)
                 {
@@ -117,7 +117,7 @@ public class SelectSkill : MonoBehaviour
                 }
                 break;
             }
-            case 2:
+            case 2: // 드론
             {
                 if (GameDataManager.Instance.DroneLevel < 5)
                 {
@@ -127,7 +127,7 @@ public class SelectSkill : MonoBehaviour
                 }
                 break;
             }
-            case 3:
+            case 3: // 화살
             {
                 if (GameDataManager.Instance.ArrowLevel < 5)
                 {
@@ -138,13 +138,35 @@ public class SelectSkill : MonoBehaviour
 
                 break;
             }
-            case 4:
+            case 4: // 아이스에이지
             {
                 if (GameDataManager.Instance.IceLevel < 5)//게임데이터매니저에서 레벨추가
                 {
                     skills[4].skillObject.SetActive(true);
                     GameDataManager.Instance.IceLevel++;
                     Debug.Log("아에~!"+GameDataManager.Instance.IceLevel);
+                }
+                
+                break;
+            }
+            case 5: // 아이스볼
+            {
+                if (GameDataManager.Instance.IceBallLevel < 5)//게임데이터매니저에서 레벨추가
+                {
+                    skills[5].skillObject.SetActive(true);
+                    GameDataManager.Instance.IceBallLevel++;
+                    Debug.Log("아이스볼"+GameDataManager.Instance.IceBallLevel);
+                }
+                
+                break;
+            }
+            case 6: // 포이즌볼
+            {
+                if (GameDataManager.Instance.PoisonBallLevel < 5)//게임데이터매니저에서 레벨추가
+                {
+                    skills[6].skillObject.SetActive(true);
+                    GameDataManager.Instance.PoisonBallLevel++;
+                    Debug.Log("포이즌볼"+GameDataManager.Instance.PoisonBallLevel);
                 }
                 
                 break;

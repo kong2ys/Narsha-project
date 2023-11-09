@@ -97,6 +97,7 @@ public class CircleBall : MonoBehaviour
                 {
                     case 1:
                     {
+                        Debug.Log(231);
                         CircleBallRotate(1, 2);
                         break;
                     }
@@ -131,29 +132,89 @@ public class CircleBall : MonoBehaviour
     void CircleBallRotate(int num, int index)
     {
         _deg += _rotateSpeed[index] * Time.deltaTime;
-
-        if (_deg < 360)
+        
+        switch (type)
         {
-            for (int i = 0; i < num; i++)
+            case BallType.Fire:
             {
-                if (!fireBall[i].activeSelf)
+                if (_deg < 360)
                 {
-                    fireBall[i].SetActive(true);
+                    for (int i = 0; i < num; i++)
+                    {
+                        if (!fireBall[i].activeSelf)
+                        {
+                            fireBall[i].SetActive(true);
+                        }
+
+                        var rotationSize = 360 / num;
+                        var rad = Mathf.Deg2Rad * (_deg + (i * rotationSize));
+                        var x = _radius[index] * Mathf.Sin(rad);
+                        var y = _radius[index] * Mathf.Cos(rad);
+
+                        fireBall[i].transform.position = target.transform.position + new Vector3(x, 0, y);
+                        fireBall[i].transform.rotation = Quaternion.Euler(90, 0, (_deg + (i * rotationSize)) * -1);
+                    }
                 }
+                else
+                {
+                    _deg = 0;
+                }
+                break;
+            }
+            case BallType.Ice:
+            {
+                if (_deg < 360)
+                {
+                    for (int i = 0; i < num; i++)
+                    {
+                        if (!iceBall[i].activeSelf)
+                        {
+                            iceBall[i].SetActive(true);
+                        }
 
-                var rotationSize = 360 / num;
-                var rad = Mathf.Deg2Rad * (_deg + (i * rotationSize));
-                var x = _radius[index] * Mathf.Sin(rad);
-                var y = _radius[index] * Mathf.Cos(rad);
+                        var rotationSize = 360 / num;
+                        var rad = Mathf.Deg2Rad * (_deg + (i * rotationSize));
+                        var x = _radius[index] * Mathf.Sin(rad);
+                        var y = _radius[index] * Mathf.Cos(rad);
 
-                fireBall[i].transform.position = target.transform.position + new Vector3(x, 0, y);
-                fireBall[i].transform.rotation = Quaternion.Euler(90, 0, (_deg + (i * rotationSize)) * -1);
+                        iceBall[i].transform.position = target.transform.position + new Vector3(x, 0, y);
+                        iceBall[i].transform.rotation = Quaternion.Euler(90, 0, (_deg + (i * rotationSize)) * -1);
+                    }
+                }
+                else
+                {
+                    _deg = 0;
+                }
+                break;
+            }
+            case BallType.Poison:
+            {
+                if (_deg < 360)
+                {
+                    for (int i = 0; i < num; i++)
+                    {
+                        if (!poisonBall[i].activeSelf)
+                        {
+                            poisonBall[i].SetActive(true);
+                        }
+
+                        var rotationSize = 360 / num;
+                        var rad = Mathf.Deg2Rad * (_deg + (i * rotationSize));
+                        var x = _radius[index] * Mathf.Sin(rad);
+                        var y = _radius[index] * Mathf.Cos(rad);
+
+                        poisonBall[i].transform.position = target.transform.position + new Vector3(x, 0, y);
+                        poisonBall[i].transform.rotation = Quaternion.Euler(90, 0, (_deg + (i * rotationSize)) * -1);
+                    }
+                }
+                else
+                {
+                    _deg = 0;
+                }
+                break;
             }
         }
-        else
-        {
-            _deg = 0;
-        }
+
     }
     
     void OnTriggerEnter(Collider other)
