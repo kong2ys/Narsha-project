@@ -182,6 +182,30 @@ public class SelectSkill : MonoBehaviour
                 
                 break;
             }
+            case 8: // 공격력 증가
+            {
+                if (skills[8].skillLevel < 5)
+                {
+                    skills[8].skillObject.SetActive(true);
+                    Debug.Log("공격력 증가 "+GameDataManager.Instance.PlusStr);
+                }
+                
+                break;
+            }
+            case 9:
+                if (skills[9].skillLevel<5)
+                {
+                    skills[9].skillObject.SetActive(true);
+                    Debug.Log("체력증가"+GameDataManager.Instance.PlusHp);
+                }
+                break;
+            case 10:
+                if (skills[10].skillLevel<5)
+                {
+                    skills[10].skillObject.SetActive(true);
+                    Debug.Log("dㅣ속증가"+GameDataManager.Instance.PlusDex);
+                }
+                break;
         }
     }
 

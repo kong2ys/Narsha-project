@@ -14,6 +14,9 @@ public class GameData
     
     public int playerLevel = 1;
     public float playerHp = 200;
+    public float plusStr = 1; // 스텟 업 시 곱할 데미지 수치
+    public float plusHp = 1; //       ''     체력 수치
+    public float plusDex = 1; //      ''     이속 수치
     
     public float attackDelay = 1f;
     
@@ -84,6 +87,21 @@ public class GameDataManager
     {
         get { return _gameData.playerHp; }
         set { _gameData.playerHp = value; }
+    }
+    public float PlusStr
+    {
+        get { return _gameData.plusStr; }
+        set { _gameData.plusStr = value; }
+    }
+    public float PlusHp
+    {
+        get { return _gameData.plusHp; }
+        set { _gameData.plusHp = value; }
+    }
+    public float PlusDex
+    {
+        get { return _gameData.plusDex; }
+        set { _gameData.plusDex = value; }
     }
     public float AttackDelay
     {
