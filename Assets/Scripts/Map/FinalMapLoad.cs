@@ -10,7 +10,6 @@ public class FinalMapLoad : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("next map load");
             SceneManager.LoadScene("FinalScene");
         }
     }
