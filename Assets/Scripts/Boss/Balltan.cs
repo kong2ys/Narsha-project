@@ -23,6 +23,7 @@ public class Balltan : MonoBehaviour
 
     public float hp = 1500;
     public float maxhp = 1500;
+    public bool isAlive = false;
 
     private bool summonWall = false;
     private bool drawLine = false;
@@ -56,6 +57,8 @@ public class Balltan : MonoBehaviour
         hpslider.value = (float)hp / (float)maxhp;
         Pattern();
         Move();
+        if (hp < 1)
+            isAlive = false;
     }
     private void OnDrawGizmos()
     {
@@ -93,7 +96,10 @@ public class Balltan : MonoBehaviour
             
             case 1: //벽 생성
                 if (currentTime == 0)
+                {
                     currentTime = pt1Time;
+                    isAlive = true;
+                }
                 var position = lookTarget.transform.position;
                 transform.position = new Vector3(position.x + 5,position.y,position.z);
                 _move = false;
