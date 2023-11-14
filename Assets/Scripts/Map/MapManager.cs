@@ -50,14 +50,14 @@ public class MapManager : MonoBehaviour
 
         _movePos = tileSize * 3;     // 3 * 3 타일 => 타일 세 칸 넓이 이동
         
-        Balltan _balltanScript = balltan.GetComponent<Balltan>();
+        // Balltan _balltanScript = balltan.GetComponent<Balltan>();
         // Boss2 _boss2Script = boss2.GetComponent<Boss2>();
     }
     
     void Update()
     {
         // 보스 생존 플래그 설정
-        _isBalltanLive = _balltanScript.isAlive;
+        // _isBalltanLive = _balltanScript.isAlive;
         // _isBoss2Live = _boss2Script.isAlive;
 
         if (_isBalltanLive && !_isFence)
