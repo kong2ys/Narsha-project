@@ -170,7 +170,7 @@ public class GameDataManager
     }
     public int meteorLevel
     {
-        get { return _gameData.meteorLevel; }
+        get { return _gameData. meteorLevel; }
         set { _gameData.meteorLevel = value; }
     }
     
