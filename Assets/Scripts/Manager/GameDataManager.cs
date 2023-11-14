@@ -34,6 +34,7 @@ public class GameData
     public int arrowLevel = 0;
     public int iceLevel = 0;
     public int swordShieldLevel = 0;
+    public int meteorLevel = 0;
 
     // 스킬들 데미지
     public float turretDamage = 10.0f;
@@ -166,6 +167,11 @@ public class GameDataManager
     {
         get { return _gameData.swordShieldLevel; }
         set { _gameData.swordShieldLevel = value; }
+    }
+    public int meteorLevel
+    {
+        get { return _gameData.meteorLevel; }
+        set { _gameData.meteorLevel = value; }
     }
     
     // 엑티브 스킬 데미지

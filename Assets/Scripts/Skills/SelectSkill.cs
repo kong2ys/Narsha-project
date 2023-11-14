@@ -205,8 +205,16 @@ public class SelectSkill : MonoBehaviour
                     skills[10].skillObject.SetActive(true);
                     Debug.Log("dㅣ속증가"+GameDataManager.Instance.PlusDex);
                 }
+
+                break;
+            case 11:
+                if (skills[11].skillLevel<5)
+                {
+                    skills[11].skillObject.SetActive(true);
+                }
                 break;
         }
+        
     }
 
     public void Finish()

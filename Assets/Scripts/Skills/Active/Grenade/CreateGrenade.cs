@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class CreateGrenade : MonoBehaviour
 {
-    public GameObject grenadeFactory;
-    public Transform grenadeMakePosition;
-    public Vector3 offset;
-
-    private GameObject _grenade;
-    private GameObject[] _grenadeObjectPool;
-    private int _grenadePoolSize = 3;
-
+    
     private bool _isCoolTime = false;
     private float _coolTime = 1.0f;
 
@@ -28,14 +21,6 @@ public class CreateGrenade : MonoBehaviour
 
     void Start()
     {
-        _grenadeObjectPool = new GameObject[_grenadePoolSize];
-        
-        for (int i = 0; i < _grenadePoolSize; i++)
-        {
-            GameObject grenade = Instantiate(grenadeFactory);
-            grenade.SetActive(false);
-            _grenadeObjectPool[i] = grenade;
-        }
 
         _busterObjectPool = new GameObject[_busterPoolSize];
         for (int i = 0; i < _busterPoolSize; i++)
@@ -56,34 +41,14 @@ public class CreateGrenade : MonoBehaviour
     
     void Update()
     {
-        _grenadePoolSize = GameDataManager.Instance.GrenadeLevel;
         _busterPoolSize = GameDataManager.Instance.GrenadeLevel;
         
         if (Input.GetKeyDown(KeyCode.E) && !_isCoolTime)
         {
             MakeGrenade();
-        }
-        if (Input.GetKeyDown(KeyCode.Q) && !_isCoolTime)
-        {
-            MakeBuster();
-        }
-
-        void MakeBuster()
-        {
-            for (int i = 0; i < _grenadePoolSize+1; i++) 
-            {
-                _grenade = _grenadeObjectPool[i];
-                if (_grenade.activeSelf == false)
-                {
-                    _grenade.transform.position = grenadeMakePosition.position + offset;
-                    _grenade.SetActive(true);
-                    break;
-                }
-            }
-        }
-
-
-    void MakeGrenade()
+        } 
+        
+        void MakeGrenade()
     {
         _isCoolTime = true;
         switch (GameDataManager.Instance.GrenadeLevel)
@@ -96,8 +61,6 @@ public class CreateGrenade : MonoBehaviour
                     if (_surutan.activeSelf == false)
                     {
                         _surutan.transform.position = busterMakePosition.position;
-                        // Rigidbody rb = _surutan.GetComponent<Rigidbody>();
-                        // rb.AddForce(busterMakePosition.transform.forward * 5f, ForceMode.Impulse);
                         _surutan.SetActive(true);
                         break;
                     }
@@ -116,7 +79,6 @@ public class CreateGrenade : MonoBehaviour
                 }
                 break;
         }
-
             StartCoroutine(CoolTime());
         }
     }
