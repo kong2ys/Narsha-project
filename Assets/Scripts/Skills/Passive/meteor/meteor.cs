@@ -15,7 +15,7 @@ public class meteor : MonoBehaviour
     public float bombDelay;
     private float _fallSpeed = 20.0f;
 
-    private void Start()
+    void Awake()
     {
         _bombObjectPool = new GameObject[_bombPoolSize];
         

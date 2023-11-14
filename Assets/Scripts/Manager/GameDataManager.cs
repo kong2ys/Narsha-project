@@ -35,6 +35,7 @@ public class GameData
     public int iceLevel = 0;
     public int swordShieldLevel = 0;
     public int meteorLevel = 0;
+    public int bounceBallLevel = 0;
 
     // 스킬들 데미지
     public float turretDamage = 10.0f;
@@ -45,6 +46,7 @@ public class GameData
     public float poisonBallDamage = 10.0f;
     public float droneDamage = 10.0f;
     public float arrowDamage = 10.0f;
+    public float bounceBallDamage = 10.0f;
 }
 
 public class GameDataManager
@@ -168,10 +170,15 @@ public class GameDataManager
         get { return _gameData.swordShieldLevel; }
         set { _gameData.swordShieldLevel = value; }
     }
-    public int meteorLevel
+    public int MeteorLevel
     {
         get { return _gameData.meteorLevel; }
         set { _gameData.meteorLevel = value; }
+    }
+    public int BounceBallLevel
+    {
+        get { return _gameData.bounceBallLevel; }
+        set { _gameData.bounceBallLevel = value; }
     }
     
     // 엑티브 스킬 데미지
@@ -211,5 +218,10 @@ public class GameDataManager
     {
         get { return _gameData.arrowDamage; }
         set { _gameData.arrowDamage = value; }
+    }
+    public float BounceBallDamage
+    {
+        get { return _gameData.bounceBallDamage; }
+        set { _gameData.bounceBallDamage = value; }
     }
 }

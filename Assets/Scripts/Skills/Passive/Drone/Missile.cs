@@ -68,8 +68,7 @@ public class Missile : MonoBehaviour
         if (enemy != null)
         {
             _missileTarget = null;
-            enemy.TakeDamage(GameDataManager.Instance.FireDamage);
-            Debug.Log("맞았다!");
+            enemy.TakeDamage(GameDataManager.Instance.DroneDamage);
             gameObject.SetActive(false);
         }
     }

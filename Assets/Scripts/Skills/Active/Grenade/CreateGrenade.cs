@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CreateGrenade : MonoBehaviour
 {
-    
     private bool _isCoolTime = false;
     private float _coolTime = 1.0f;
 
@@ -21,7 +20,6 @@ public class CreateGrenade : MonoBehaviour
 
     void Start()
     {
-
         _busterObjectPool = new GameObject[_busterPoolSize];
         for (int i = 0; i < _busterPoolSize; i++)
         {
@@ -49,7 +47,7 @@ public class CreateGrenade : MonoBehaviour
         } 
         
         void MakeGrenade()
-    {
+        {
         _isCoolTime = true;
         switch (GameDataManager.Instance.GrenadeLevel)
         {

@@ -30,8 +30,7 @@ public class CreatMeteor : MonoBehaviour
     }
     void Update()
     {
-        _meteorPoolSize = GameDataManager.Instance.meteorLevel;
-       
+        _meteorPoolSize = GameDataManager.Instance.MeteorLevel;
     }
 
     private void OnEnable()

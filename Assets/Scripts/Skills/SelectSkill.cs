@@ -192,27 +192,44 @@ public class SelectSkill : MonoBehaviour
                 
                 break;
             }
-            case 9:
-                if (skills[9].skillLevel<5)
+            case 9: // 체력 증가
+            {
+                if (skills[9].skillLevel < 5)
                 {
                     skills[9].skillObject.SetActive(true);
-                    Debug.Log("체력증가"+GameDataManager.Instance.PlusHp);
+                    Debug.Log("체력증가" + GameDataManager.Instance.PlusHp);
                 }
                 break;
-            case 10:
-                if (skills[10].skillLevel<5)
+            }
+            case 10: // 이속 증가
+            {
+                if (skills[10].skillLevel < 5)
                 {
                     skills[10].skillObject.SetActive(true);
-                    Debug.Log("dㅣ속증가"+GameDataManager.Instance.PlusDex);
+                    Debug.Log("dㅣ속증가" + GameDataManager.Instance.PlusDex);
                 }
-
                 break;
-            case 11:
-                if (skills[11].skillLevel<5)
+            }
+            case 11: // 메테오
+            {
+                if (skills[11].skillLevel < 5)
                 {
                     skills[11].skillObject.SetActive(true);
                 }
+
                 break;
+            }
+            case 12: // 바운스볼
+            {
+                if (skills[12].skillLevel < 5)
+                {
+                    GameDataManager.Instance.BounceBallLevel++;
+                    skills[12].skillObject.SetActive(true);
+                    Debug.Log("바운스볼렙" + GameDataManager.Instance.BounceBallLevel);
+                }
+
+                break;
+            }
         }
         
     }
