@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 1a054f6e37171c842b523e4e3a684a85, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 5433ee87cc5304f6fbb20a0bb26bec1b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.041120112, g: 0.07249693, b: 0.1256583, a: 1}
+  m_IndirectSpecularColor: {r: 0.09428803, g: 0.11944879, b: 0.15523687, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -966,7 +966,7 @@ GameObject:
   - component: {fileID: 1215025678}
   - component: {fileID: 1215025677}
   - component: {fileID: 1215025676}
-  - component: {fileID: 1215025682}
+  - component: {fileID: 1215025684}
   - component: {fileID: 1215025683}
   m_Layer: 9
   m_Name: Player
@@ -1101,19 +1101,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1215025682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215025675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 616bf41f35cf34a43b5bf5f6eee65857, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ring: {fileID: 3395507061745559038}
 --- !u!136 &1215025683
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1122,12 +1109,25 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215025675}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.71017087
   m_Height: 2.6048427
   m_Direction: 1
   m_Center: {x: -0.009247065, y: 0.30242133, z: 0}
+--- !u!114 &1215025684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215025675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa53532d8a8da9418f642776e7f4b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ring: {fileID: 3395507061745559038}
 --- !u!1 &1221814465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,7 +1326,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 32f2e9370eb502f45a72b49d3af1f06e, type: 2}
+  - {fileID: 2100000, guid: 0e5a5746571a314459c1742ab722ad81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

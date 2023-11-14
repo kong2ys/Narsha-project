@@ -45,7 +45,6 @@ public class CreateGrenade : MonoBehaviour
         {
             MakeGrenade();
         } 
-        
         void MakeGrenade()
         {
         _isCoolTime = true;

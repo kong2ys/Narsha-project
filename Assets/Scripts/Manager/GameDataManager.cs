@@ -172,7 +172,7 @@ public class GameDataManager
     }
     public int MeteorLevel
     {
-        get { return _gameData.meteorLevel; }
+        get { return _gameData. meteorLevel; }
         set { _gameData.meteorLevel = value; }
     }
     public int BounceBallLevel
