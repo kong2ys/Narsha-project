@@ -56,6 +56,12 @@ public class MapManager : MonoBehaviour
         // 보스 생존 플래그 설정
         // _isBalltanLive = _balltanScript.isAlive;
         // _isBoss2Live = _boss2Script.isAlive;
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            _isPortal = true;
+        }
+        
         if (_isPortal)
         {
             StartCoroutine(MovePortal(portal));
