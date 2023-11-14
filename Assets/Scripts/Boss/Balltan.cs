@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.UI;
-using Random = UnityEngine.Random; // OnDrawGizmos
+using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
+using Slider = UnityEngine.UI.Slider; // OnDrawGizmos
 
 public class Balltan : MonoBehaviour
 {
     private bool _move = true;
-    public static bool isAlive = false;
     public int pattern = -1;
     public float dash = 1.25f;
     public float currentTime;
@@ -27,6 +27,7 @@ public class Balltan : MonoBehaviour
 
     private bool summonWall = false;
     private bool drawLine = false;
+    public bool isAlive = true;
 
     private Vector3 _dir;
     
@@ -35,29 +36,45 @@ public class Balltan : MonoBehaviour
 
     public float angleRange = 60f;
     public float radius = 8f;
+    private float _moveDis;
 
     Color _red = new Color(1f, 0f, 0f, 0.2f);
     
     public GameObject target;
+    public GameObject body;
     public GameObject wall;
-    private GameObject circle;
+    private GameObject _circle;
     public GameObject pt2Dis;
     public Slider hpslider;
+    
+    public Animator anim;
     void Awake()
     {
+        anim = GetComponentInChildren<Animator>();
         GameObject circlemap = Instantiate(wall);
         circlemap.SetActive(false);
-        circle = circlemap;
-
+        _circle = circlemap;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (pattern == 3)
+            body.transform.position = transform.position + new Vector3(0, -0.5f, 0);
+        else
+            body.transform.position = transform.position + new Vector3(0, -1, 0);
+        body.transform.rotation = transform.rotation;
         hpslider.value = (float)hp / (float)maxhp;
         Pattern();
         Move();
+        _moveDis = Vector3.Distance(target.transform.position, transform.position);
+        anim.SetBool("Move", pattern == 0 && _moveDis > 5f);
+        anim.SetBool("Scream", pattern == 3);
+
+        if (hp < 1)
+            isAlive = false;
     }
+
     private void OnDrawGizmos()
     {
         //부채꼴 그리기
@@ -143,13 +160,14 @@ public class Balltan : MonoBehaviour
     }
     void Wall()
     {
- 
+        if (!isAlive)
+            isAlive = true;
         currentTime -= Time.deltaTime;
         if (currentTime < 0)
         {
-            circle.transform.position = transform.position;
-            circle.SetActive(true); 
-            summonWall = true; 
+            _circle.transform.position = transform.position;
+            _circle.SetActive(true); 
+            summonWall = true;
             pattern = 0; 
             currentTime = 0;
         }
@@ -235,8 +253,7 @@ public class Balltan : MonoBehaviour
 
     void Move()
     {
-        float moveDis = Vector3.Distance(target.transform.position, transform.position);
-        if (_move && summonWall && moveDis > 5f)
+       if (_move && summonWall && _moveDis > 5f)
             transform.position += transform.forward * (Time.deltaTime * speed);
     }
 }

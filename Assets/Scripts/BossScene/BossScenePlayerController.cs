@@ -21,6 +21,7 @@ public class BossScenePlayerController : MonoBehaviour
     private int _attackMotion = 0;
 
     public float attackPower = 40.0f;
+    float hp;
     public float maxhp = 200f;
     private Vector3 _dir;
     
@@ -35,7 +36,7 @@ public class BossScenePlayerController : MonoBehaviour
 
     void Update()
     {
-        float hp = GameDataManager.Instance.PlayerHp;
+        hp = GameDataManager.Instance.PlayerHp;
         hpslider.value = (float)hp / (float)maxhp;
         if (stopMove >= 0)
         {
