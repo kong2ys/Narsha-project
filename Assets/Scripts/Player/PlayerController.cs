@@ -121,11 +121,11 @@ public class PlayerController :  MonoBehaviour
         _dir = new Vector3(_h, 0, _v);
         _dir = _dir.normalized;
 
-        transform.position += _dir * (GameDataManager.Instance.PlayerMoveSpeed * Time.deltaTime);
-
         _yVelocity += gravity * Time.deltaTime;
         _dir.y = _yVelocity;
-        _characterController.Move(_dir * (GameDataManager.Instance.PlayerMoveSpeed * Time.deltaTime));
+        
+        float totalSpeed = GameDataManager.Instance.PlayerMoveSpeed + GameDataManager.Instance.PlusDex;
+        _characterController.Move(_dir * (totalSpeed * Time.deltaTime));
     }
     
     void LevelUp()
