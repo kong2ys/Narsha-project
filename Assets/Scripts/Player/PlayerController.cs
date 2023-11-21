@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class PlayerController :  MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class PlayerController :  MonoBehaviour
     private GameObject[] _bulletObjectPool;
     public GameObject bulletFactory;
     public GameObject[] firePosition; // 총알이 만들어질 위치
+
+    public Image[] activeSkill;
     
     private Camera _camera;
 
@@ -76,11 +79,13 @@ public class PlayerController :  MonoBehaviour
                 case 5 or 10 or 15 or 20 or 30:
                 {
                     GameDataManager.Instance.GrenadeLevel++;
+                    activeSkill[0].color = new Color(255, 255, 255); 
                     break;
                 }
                 case 10 or 20 or 30 or 40 or 50:
                 {
                     GameDataManager.Instance.TurretLevel++;
+                    activeSkill[1].color = new Color(255, 255, 255); 
                     break;
                 }
             }
