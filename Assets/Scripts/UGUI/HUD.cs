@@ -46,7 +46,9 @@ public class HUD : MonoBehaviour
             }
             case InfoType.Health:
             {
-                
+                float currentHp = GameDataManager.Instance.PlayerHp;
+                float maxHp = GameDataManager.Instance.PlayerMaxHp;
+                _mySlider.value = currentHp / maxHp;
                 break;
             }
             

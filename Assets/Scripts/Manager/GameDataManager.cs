@@ -13,7 +13,10 @@ public class GameData
     public float currentExp = 0;
     
     public int playerLevel = 1;
-    public float playerHp = 200;
+    public float playerCurrentHp = 200;
+    public float playerMaxHp = 200;
+    public float playerMoveSpeed = 5.0f;
+    public float fireDamage = 10.0f;
     public float plusStr = 1; // 스텟 업 시 곱할 데미지 수치
     public float plusHp = 1; //       ''     체력 수치
     public float plusDex = 1; //      ''     이속 수치
@@ -21,7 +24,6 @@ public class GameData
     public float attackDelay = 1f;
     
     public int fireLevel = 0;
-    public float fireDamage = 10.0f;
     
     // 스킬들 레벨
     public int turretLevel = 0;
@@ -88,8 +90,19 @@ public class GameDataManager
     }
     public float PlayerHp
     {
-        get { return _gameData.playerHp; }
-        set { _gameData.playerHp = value; }
+        get { return _gameData.playerCurrentHp; }
+        set { _gameData.playerCurrentHp = value; }
+    }
+    public float PlayerMaxHp
+    {
+        get { return _gameData.playerMaxHp; }
+        set { _gameData.playerMaxHp = value; }
+    }
+
+    public float PlayerMoveSpeed
+    {
+        get { return _gameData.playerMoveSpeed; }
+        set { _gameData.playerMoveSpeed = value; }
     }
     public float PlusStr
     {

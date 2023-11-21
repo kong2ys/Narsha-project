@@ -15,7 +15,6 @@ public class PlayerController :  MonoBehaviour
     CharacterController _characterController;
     public Animator anim;
     
-    public float playerSpeed = 7.0f;
     public float gravity = -20.0f;
     private float _yVelocity = 0;
     private float _h;
@@ -122,11 +121,11 @@ public class PlayerController :  MonoBehaviour
         _dir = new Vector3(_h, 0, _v);
         _dir = _dir.normalized;
 
-        transform.position += _dir * (playerSpeed * Time.deltaTime);
+        transform.position += _dir * (GameDataManager.Instance.PlayerMoveSpeed * Time.deltaTime);
 
         _yVelocity += gravity * Time.deltaTime;
         _dir.y = _yVelocity;
-        _characterController.Move(_dir * (playerSpeed * Time.deltaTime));
+        _characterController.Move(_dir * (GameDataManager.Instance.PlayerMoveSpeed * Time.deltaTime));
     }
     
     void LevelUp()
