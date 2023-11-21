@@ -31,6 +31,7 @@ public class PlayerController :  MonoBehaviour
     public GameObject[] firePosition; // 총알이 만들어질 위치
 
     public Image[] activeSkill;
+    public Image[] passiveSkill;
     
     private Camera _camera;
 
