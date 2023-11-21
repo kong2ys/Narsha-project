@@ -16,7 +16,7 @@ public class ReWind : MonoBehaviour
     public float HpLimit = 50;
     
     
-    void Start()
+    void OnEnable()
     {
         time = Instantiate(timeFactory);
         time.SetActive(false);
