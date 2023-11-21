@@ -54,7 +54,10 @@ public class SelectSkill : MonoBehaviour
             }
             for (int i = 0; i < 6; i++)
             {
-                skills[haveSkill[i]].weight = 100;
+                if (skills[haveSkill[i]].skillLevel <= 4)
+                {
+                    skills[haveSkill[i]].weight = 100;
+                }
             }
         }
 
