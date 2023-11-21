@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using Microsoft.Unity.VisualStudio.Editor;
 using Unity.VisualScripting;
 using UnityEditor.IMGUI.Controls;
@@ -14,6 +15,8 @@ using Random = UnityEngine.Random;
 public class SelectSkill : MonoBehaviour
 {
     public Image[] selectButton;
+    public Image[] passiveSkill;
+    private int _pivot = 0;
 
     public int total = 0;
 
@@ -66,12 +69,22 @@ public class SelectSkill : MonoBehaviour
         }
     }
 
+    void HaveSkill(int skillIndex)
+    {
+        if (skills[skillIndex].skillLevel == 1)
+        {
+            passiveSkill[_pivot].sprite = skills[skillIndex].skillImage;
+            _pivot++;
+        }
+    }
+
     public void ButtonLeft()
     {
         skills[skillIndex[0]].skillLevel++;
         Debug.Log(skills[skillIndex[0]].skillName);
         skillValue = skills[skillIndex[0]].value;
         SkillLevelUp(skillValue);
+        HaveSkill(skillIndex[0]);
         Finish();
     }
 
@@ -81,6 +94,7 @@ public class SelectSkill : MonoBehaviour
         Debug.Log(skills[skillIndex[1]].skillName);
         skillValue = skills[skillIndex[1]].value;
         SkillLevelUp(skillValue);
+        HaveSkill(skillIndex[1]);
         Finish();
     }
 
@@ -90,6 +104,7 @@ public class SelectSkill : MonoBehaviour
         Debug.Log(skills[skillIndex[2]].skillName);
         skillValue = skills[skillIndex[2]].value;
         SkillLevelUp(skillValue);
+        HaveSkill(skillIndex[2]);
         Finish();
     }
 
