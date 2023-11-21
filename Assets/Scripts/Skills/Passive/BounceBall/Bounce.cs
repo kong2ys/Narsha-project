@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Bounce : MonoBehaviour
 {
@@ -9,9 +11,12 @@ public class Bounce : MonoBehaviour
     float _moveXRate;
     float _moveYRate;
     Camera _camera;
+    private GameObject _player;
 
-    void Start()
+    void Awake()
     {
+        _player = GameObject.FindWithTag("Player");
+        
         _camera = Camera.main;
         _moveXRate=Random.Range(-1.0f,1.0f);
         _moveYRate=Random.Range(-1.0f,1.0f);
@@ -24,7 +29,12 @@ public class Bounce : MonoBehaviour
             _moveYRate=Random.Range(-1.0f,1.0f);
         }
     }
-    
+
+    void OnEnable()
+    {
+        transform.position = _player.transform.position;
+    }
+
     void Update()
     {
         transform.Translate(Vector3.right * (Time.deltaTime * _moveSpeed * _moveXRate),Space.World);
