@@ -7,10 +7,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public SpawnData spawnData;
-
+    
     public void Initialize(SpawnData data)
     {
         spawnData = data;
+        damage = data.damage;
         speed = data.speed;
         maxHealth = data.health;
         health = data.health;
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
     public float health;
     public float maxHealth;
     public int exp;
+    public float damage = 100;
 
     public float attackRange = 2f;
     public float attackDeley = 1f;
@@ -29,12 +31,14 @@ public class Enemy : MonoBehaviour
     private bool canAttack = true;
     private bool isLive;
     
+    private PlayerController _player;
     private Rigidbody rigid;
     private WaitForFixedUpdate wait;
     private Animator anim;
     
     void Awake()
     {
+        _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>(); 
         rigid = GetComponent<Rigidbody>();
         wait = new WaitForFixedUpdate();
         anim = GetComponent<Animator>();
@@ -108,8 +112,9 @@ public class Enemy : MonoBehaviour
     IEnumerator Attack()
     {
         Debug.Log("공격");
-        yield return new WaitForSeconds(attackDeley);
         // 실제 공격 코드
+        _player.DamageAction(damage);
+        yield return new WaitForSeconds(attackDeley);
     }
 
     IEnumerator ResetAttackState()

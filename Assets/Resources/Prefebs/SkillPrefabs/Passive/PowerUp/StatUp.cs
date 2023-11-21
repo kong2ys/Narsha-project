@@ -33,8 +33,8 @@ public class StatUp : MonoBehaviour
             }
             case StatType.Hp:
             {
-                GameDataManager.Instance.PlusHp += 0.5f;
-                Debug.Log("체력" + GameDataManager.Instance.PlusHp);
+                GameDataManager.Instance.PlayerHp *= 0.2f;
+                Debug.Log("체력" + GameDataManager.Instance.PlayerHp);
                 break;
             }
             case StatType.Dex:

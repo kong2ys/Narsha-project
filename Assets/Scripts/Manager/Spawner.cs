@@ -47,4 +47,5 @@ public class SpawnData
     public int health;
     public float speed;
     public int creatureExp;
+    public int damage;
 }

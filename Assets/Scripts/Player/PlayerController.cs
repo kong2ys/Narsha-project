@@ -32,11 +32,11 @@ public class PlayerController :  MonoBehaviour
     private Camera _camera;
 
     public ArrowFire arrowFire;
-    
-    private float _currentHp;
 
     void Start()
     {
+        GameDataManager.Instance.PlayerHp = GameDataManager.Instance.PlayerMaxHp;
+        
         _camera = Camera.main;
         _characterController = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
@@ -60,8 +60,7 @@ public class PlayerController :  MonoBehaviour
 
     void Update()
     {
-        _currentHp = GameDataManager.Instance.PlayerHp + GameDataManager.Instance.PlusHp;
-        if (_currentHp <= 0)
+        if (GameDataManager.Instance.PlayerHp <= 0)
         {
             DieAction();
         }
@@ -77,7 +76,6 @@ public class PlayerController :  MonoBehaviour
                 case 5 or 10 or 15 or 20 or 30:
                 {
                     GameDataManager.Instance.GrenadeLevel++;
-                    Debug.Log("시발!");
                     break;
                 }
                 case 10 or 20 or 30 or 40 or 50:
@@ -146,10 +144,10 @@ public class PlayerController :  MonoBehaviour
         }
     }
 
-    public void DamageAction(int damage) // 데미지 입기
+    public void DamageAction(float damage) // 데미지 입기
     {
-        _currentHp -= damage;
-        Debug.Log("남은 HP : " + _currentHp);
+        GameDataManager.Instance.PlayerHp -= damage;
+        Debug.Log("남은 HP : " + GameDataManager.Instance.PlayerHp);
     }
 
     void DieAction()
