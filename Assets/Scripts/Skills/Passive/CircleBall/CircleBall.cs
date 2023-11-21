@@ -97,7 +97,6 @@ public class CircleBall : MonoBehaviour
                 {
                     case 1:
                     {
-                        Debug.Log(231);
                         CircleBallRotate(1, 2);
                         break;
                     }

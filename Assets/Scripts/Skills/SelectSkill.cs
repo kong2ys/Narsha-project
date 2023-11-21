@@ -20,6 +20,8 @@ public class SelectSkill : MonoBehaviour
 
     public int total = 0;
 
+    public List<int> haveSkill = new List<int>();
+
     public List<int> skillIndex = new List<int>();
     
     public List<Skill> skills = new List<Skill>();
@@ -41,6 +43,18 @@ public class SelectSkill : MonoBehaviour
             else
             {
                 skills[i].weight = 100;
+            }
+        }
+
+        if (_pivot >= 6)
+        {
+            for (int i = 0; i < skills.Count; i++)
+            {
+                skills[i].weight = 0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                skills[haveSkill[i]].weight = 100;
             }
         }
 
@@ -75,6 +89,7 @@ public class SelectSkill : MonoBehaviour
         {
             passiveSkill[_pivot].sprite = skills[skillIndex].skillImage;
             _pivot++;
+            haveSkill.Add(skillIndex);
         }
     }
 
