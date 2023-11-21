@@ -32,6 +32,8 @@ public class PlayerController :  MonoBehaviour
     private Camera _camera;
 
     public ArrowFire arrowFire;
+    
+    private float _currentHp;
 
     void Start()
     {
@@ -58,6 +60,12 @@ public class PlayerController :  MonoBehaviour
 
     void Update()
     {
+        _currentHp = GameDataManager.Instance.PlayerHp + GameDataManager.Instance.PlusHp;
+        if (_currentHp <= 0)
+        {
+            DieAction();
+        }
+
         Move();
         Turn();
         LevelUp();
@@ -140,8 +148,13 @@ public class PlayerController :  MonoBehaviour
 
     public void DamageAction(int damage) // 데미지 입기
     {
-        GameDataManager.Instance.PlayerHp -= damage;
-        Debug.Log("남은 HP : " + GameDataManager.Instance.PlayerHp);
+        _currentHp -= damage;
+        Debug.Log("남은 HP : " + _currentHp);
+    }
+
+    void DieAction()
+    {
+        Debug.Log("죽었다!!");
     }
     
     IEnumerator Fire() // 기본 공격
