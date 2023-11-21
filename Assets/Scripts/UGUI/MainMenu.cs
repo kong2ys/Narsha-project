@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     public void OnClickNewGame()
     {
         Debug.Log("새 게임");
-        SceneManager.LoadScene("PlayerScene");
+        SceneManager.LoadScene("Scenes/PlayerScene");
     }
 
     public void OnClickLoad()
@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
     public void OnClickOption()
     {
         Debug.Log("옵션");
-        SceneManager.LoadScene("Resolution");
+        SceneManager.LoadScene("Scenes/Resolution");
     }
 
     public void OnClickQuit()
