@@ -41,7 +41,10 @@ public class HUD : MonoBehaviour
             }
             case InfoType.Time:
             {
-                
+                float currentTime = GameManager.instance.gameTime;
+                int min = Mathf.FloorToInt(currentTime / 60);
+                int sec = Mathf.FloorToInt(currentTime % 60);
+                _mytext.text = string.Format("{0:D2}:{1:D2}", min, sec);
                 break;
             }
             case InfoType.Health:
