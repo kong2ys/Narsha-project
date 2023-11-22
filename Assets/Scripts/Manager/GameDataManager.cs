@@ -38,6 +38,7 @@ public class GameData
     public int swordShieldLevel = 0;
     public int meteorLevel = 0;
     public int bounceBallLevel = 0;
+    public int ReWindLevel = 0;
 
     // 스킬들 데미지
     public float turretDamage = 10.0f;
@@ -193,7 +194,11 @@ public class GameDataManager
         get { return _gameData.bounceBallLevel; }
         set { _gameData.bounceBallLevel = value; }
     }
-    
+    public int ReWind
+    {
+        get { return _gameData.ReWindLevel; }
+        set { _gameData.ReWindLevel = value; }
+    }
     // 엑티브 스킬 데미지
     public float TurretDamage
     {

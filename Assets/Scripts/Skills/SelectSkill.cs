@@ -263,6 +263,15 @@ public class SelectSkill : MonoBehaviour
 
                 break;
             }
+            case 13: // Rewind
+            {
+                if (skills[13].skillLevel < 5)
+                {
+                    GameDataManager.Instance.ReWind++;
+                    skills[13].skillObject.SetActive(true);
+                }
+                break;
+            }
         }
         
     }
