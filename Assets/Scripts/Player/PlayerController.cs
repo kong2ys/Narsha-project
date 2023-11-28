@@ -67,16 +67,30 @@ public class PlayerController :  MonoBehaviour
         {
             switch (GameDataManager.Instance.PlayerLevel)
             {
-                case 5 or 10 or 15 or 20 or 30:
+                case 5:
                 {
+                    Debug.Log(9323123123123312332);
                     GameDataManager.Instance.GrenadeLevel++;
                     activeSkill[0].color = new Color(255, 255, 255); 
                     break;
                 }
-                case 10 or 15 or 20 or 25 or 30:
+                case 10:
                 {
+                    GameDataManager.Instance.GrenadeLevel++;
                     GameDataManager.Instance.TurretLevel++;
                     activeSkill[1].color = new Color(255, 255, 255); 
+                    break;
+                }
+                case 15:
+                {
+                    if (GameDataManager.Instance.GrenadeLevel < 5)
+                    {
+                        GameDataManager.Instance.GrenadeLevel++;
+                    }
+                    if (GameDataManager.Instance.TurretLevel < 5)
+                    {
+                        GameDataManager.Instance.TurretLevel++;
+                    }
                     break;
                 }
             }

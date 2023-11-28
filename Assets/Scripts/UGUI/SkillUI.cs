@@ -11,9 +11,14 @@ public class SkillUI : MonoBehaviour
 
     void Update()
     {
-        if (GameDataManager.Instance.TurretLevel >= 1)
+        if (GameDataManager.Instance.GrenadeLevel >= 1)
         {
             activeSkillUI[0].sprite = skillIcon[0];
+        }
+        
+        if (GameDataManager.Instance.TurretLevel >= 1)
+        {
+            activeSkillUI[1].sprite = skillIcon[1];
         }
     }
 }
