@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
         maxHealth = data.health;
         health = data.health;
         exp = data.creatureExp;
+        dropGold = data.dropGold;
     }
     
     public Rigidbody target;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     public int exp;
     public float damage = 100;
+    public int dropGold;
 
     public float attackRange = 2f;
     public float attackDeley = 1f;
@@ -93,6 +95,7 @@ public class Enemy : MonoBehaviour
             Dead();
             GameManager.instance.kill++;
             GameDataManager.Instance.CurrentExp += exp;
+            GameDataManager.Instance.HaveGold += dropGold;
         }
     }
 
