@@ -29,6 +29,7 @@ public class ReWind : MonoBehaviour
     
     private void Update()
     {
+        time.transform.position = target.transform.position;
         if (GameDataManager.Instance.PlayerHp < HpLimit *0.3 && isReady)
         {
             Debug.Log(HpLimit);
@@ -72,11 +73,9 @@ public class ReWind : MonoBehaviour
             // 카메라가 목표 위치에 도달했는지 확인
             if (target.position == rememberedPosition)
             {
-               
                 Debug.Log("무야호!");
                 rememberedPosition = target.position;
-                
-                
+                time.SetActive(false);
                 break;
             } 
         

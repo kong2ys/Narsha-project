@@ -6,8 +6,8 @@ public class CreatSwordShield : MonoBehaviour
     public GameObject _shieldPrefeb;
     private GameObject _shield;
     public float _duration = 5f;
-    public float _coolTime = 15f;
-
+    
+    private float[] coolTime = {0f,20f, 18f, 16f, 14f, 12f};
     void Awake()
     {
         _shield = Instantiate(_shieldPrefeb);
@@ -36,7 +36,7 @@ public class CreatSwordShield : MonoBehaviour
         while (true)
         {
             MakeShield();
-            yield return new WaitForSeconds(_coolTime+_duration);
+            yield return new WaitForSeconds(coolTime[GameDataManager.Instance.SwordShieldLevel]+_duration);
         }
     }
 }
