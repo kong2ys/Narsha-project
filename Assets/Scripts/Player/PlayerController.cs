@@ -136,7 +136,7 @@ public class PlayerController :  MonoBehaviour
         {
             GameDataManager.Instance.CurrentExp -= GameDataManager.Instance.MaxExp;
             GameDataManager.Instance.PlayerLevel++;
-            GameDataManager.Instance.MaxExp *= 1.1f;
+            GameDataManager.Instance.MaxExp *= 1.2f;
         }
     }
 

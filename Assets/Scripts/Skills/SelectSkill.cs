@@ -90,7 +90,7 @@ public class SelectSkill : MonoBehaviour
     {
         if (skills[skillIndex].skillLevel == 1)
         {
-            passiveSkill[_pivot].sprite = skills[skillIndex].skillImage;
+            passiveSkill[_pivot].sprite = skills[skillIndex].skillIcon;
             _pivot++;
             haveSkill.Add(skillIndex);
         }
