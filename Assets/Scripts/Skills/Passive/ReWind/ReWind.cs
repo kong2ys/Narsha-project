@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ReWind : MonoBehaviour
@@ -11,36 +12,44 @@ public class ReWind : MonoBehaviour
     public GameObject timeFactory;
     private GameObject time;
     private float rememberPlayerHp;
-    public float coolTime = 60f;
-    public float coolTimeLimit = 60f;
-    public float HpLimit = 50;
+    private float HpLimit;
     
-    
+    private int[] coolTime = {60, 50, 40, 30, 20};
+    private bool isReady = true;
+
+
     void OnEnable()
     {
+        HpLimit = GameDataManager.Instance.PlayerHp;
         time = Instantiate(timeFactory);
         time.SetActive(false);
         StartCoroutine(PositionRemember());
+        
     }
-
+    
     private void Update()
     {
-        coolTime += Time.deltaTime;
-        if (GameDataManager.Instance.PlayerHp <= HpLimit && coolTime >=coolTimeLimit || Input.GetKey(KeyCode.G))
+        if (GameDataManager.Instance.PlayerHp < HpLimit *0.3 && isReady)
         {
-            coolTime = 0;
+            Debug.Log(HpLimit);
+            isReady = false;
+            StartCoroutine(StartCoolTime(coolTime[GameDataManager.Instance.ReWindLevel - 1]));
             StartCoroutine(MoveToRememberedPosition());
         }
     }
 
     IEnumerator PositionRemember()
     {
-        while (true)
-        {
-            rememberPlayerHp = GameDataManager.Instance.PlayerHp;
-            rememberedPosition = target.position;
-            yield return new WaitForSeconds(rememberInterval);
-        }
+        rememberPlayerHp = GameDataManager.Instance.PlayerHp;
+        rememberedPosition = target.position;
+        yield return new WaitForSeconds(rememberInterval);
+        StartCoroutine(PositionRemember());
+    }
+
+    IEnumerator StartCoolTime(int CoolTime)
+    {
+        yield return new WaitForSeconds(CoolTime);
+        isReady = true;
     }
 
     IEnumerator MoveToRememberedPosition()
@@ -66,7 +75,7 @@ public class ReWind : MonoBehaviour
                
                 Debug.Log("무야호!");
                 rememberedPosition = target.position;
-                
+                HpLimit = GameDataManager.Instance.PlayerHp;
                 
                 break;
             } 
