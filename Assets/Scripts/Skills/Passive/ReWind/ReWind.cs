@@ -75,7 +75,7 @@ public class ReWind : MonoBehaviour
                
                 Debug.Log("무야호!");
                 rememberedPosition = target.position;
-                HpLimit = GameDataManager.Instance.PlayerHp;
+                
                 
                 break;
             } 
