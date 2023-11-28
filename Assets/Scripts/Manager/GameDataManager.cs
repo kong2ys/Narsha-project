@@ -11,6 +11,7 @@ public class GameData
     
     public float maxExp = 10000;
     public float currentExp = 0;
+    public int killScore = 0;
     
     public int playerLevel = 1;
     public float playerCurrentHp = 200;
@@ -69,6 +70,11 @@ public class GameDataManager
     GameData _gameData = new GameData();
 
     // 플레이어
+    public int KillScore
+    {
+        get { return _gameData.killScore; }
+        set { _gameData.killScore = value; }
+    }
     public int HaveGold
     {
         get { return _gameData.haveGold; }

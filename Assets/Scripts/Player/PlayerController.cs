@@ -72,7 +72,8 @@ public class PlayerController :  MonoBehaviour
         Turn();
         LevelUp();
 
-        if (GameDataManager.Instance.PlayerLevel-1 == _currentPlayerLevel) // 레벨업 시 스킬 선택창 띄우기
+        if (GameDataManager.Instance.PlayerLevel-1 == _currentPlayerLevel &&
+            GameDataManager.Instance.PlayerLevel < 30) // 레벨업 시 스킬 선택창 띄우기
         {
             switch (GameDataManager.Instance.PlayerLevel)
             {
@@ -82,7 +83,7 @@ public class PlayerController :  MonoBehaviour
                     activeSkill[0].color = new Color(255, 255, 255); 
                     break;
                 }
-                case 10 or 20 or 30 or 40 or 50:
+                case 10 or 15 or 20 or 25 or 30:
                 {
                     GameDataManager.Instance.TurretLevel++;
                     activeSkill[1].color = new Color(255, 255, 255); 

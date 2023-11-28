@@ -106,6 +106,7 @@ public class Enemy : MonoBehaviour
 
     void Dead()
     {
+        GameDataManager.Instance.KillScore++;
         gameObject.SetActive(false);
     }
 

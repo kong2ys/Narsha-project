@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoType { Exp, Level, Kill, Time, Health }
+    public enum InfoType { Exp, Level, Kill, Time, Health, Gold }
     public InfoType type;
 
     Text _mytext;
@@ -14,7 +14,7 @@ public class HUD : MonoBehaviour
 
     void Awake()
     {
-        _mytext = GetComponent<Text>();
+        _mytext = GetComponentInChildren<Text>();
         _mySlider = GetComponent<Slider>();
     }
 
@@ -31,12 +31,12 @@ public class HUD : MonoBehaviour
             }
             case InfoType.Level:
             {
-                
+                _mytext.text = String.Format("Lv.{0:F0}",GameDataManager.Instance.PlayerLevel);
                 break;
             }
             case InfoType.Kill:
             {
-                
+                _mytext.text = String.Format("{0:F0}",GameDataManager.Instance.KillScore);
                 break;
             }
             case InfoType.Time:
@@ -54,7 +54,11 @@ public class HUD : MonoBehaviour
                 _mySlider.value = currentHp / maxHp;
                 break;
             }
-            
+            case InfoType.Gold:
+            {
+                _mytext.text = String.Format("{0:F0}",GameDataManager.Instance.HaveGold);
+                break;
+            }
         }
     }
 }
