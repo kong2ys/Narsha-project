@@ -13,8 +13,8 @@ public class CreateIceAge : MonoBehaviour
     private int _icePoolSize = 1;//풀 사이즈
 
     private bool _isCoolTime = true;
-    public float _coolTime = 15.0f;
     
+    private float[] coolTime = {0f,15f, 14f, 13f, 12f, 11f};
     void Awake()
     {
         _iceObjectPool = new GameObject[_icePoolSize];
@@ -48,7 +48,8 @@ public class CreateIceAge : MonoBehaviour
     IEnumerator CoolTime()
     {
         MakeIceAge();
-        yield return new WaitForSeconds(_coolTime);
-        CoolTime();
+        yield return new WaitForSeconds(coolTime[GameDataManager.Instance.IceLevel]);
+        yield return CoolTime();
     }
+
 }
