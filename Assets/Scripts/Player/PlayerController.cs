@@ -132,6 +132,10 @@ public class PlayerController :  MonoBehaviour
     
     void LevelUp()
     {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            GameDataManager.Instance.PlayerLevel++;
+        }
         if (GameDataManager.Instance.CurrentExp >= GameDataManager.Instance.MaxExp)
         {
             GameDataManager.Instance.CurrentExp -= GameDataManager.Instance.MaxExp;
