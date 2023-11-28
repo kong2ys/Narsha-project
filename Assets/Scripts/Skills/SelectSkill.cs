@@ -267,7 +267,7 @@ public class SelectSkill : MonoBehaviour
             {
                 if (skills[13].skillLevel < 5)
                 {
-                    GameDataManager.Instance.ReWind++;
+                    GameDataManager.Instance.ReWindLevel++;
                     skills[13].skillObject.SetActive(true);
                 }
                 break;

@@ -56,13 +56,48 @@ public class GameData
 public class GameDataManager
 {
     private static GameDataManager _instance;
+
+    public void Initialize()
+    {
+        // 플레이어 초기화
+        MaxExp = 10000;
+        CurrentExp = 0;
+        KillScore = 0;
     
+        PlayerLevel = 1;
+        PlusStr = 1; // 스텟 업 시 곱할 데미지 수치
+        PlusHp = 1; //       ''     체력 수치
+        PlusDex = 1; //      ''     이속 수치
+
+        FireLevel = 0;
+        
+        
+        // 스킬 레벨 초기화
+        TurretLevel = 0;
+        GrenadeLevel = 0;
+    
+        FireBallLevel = 0;
+        IceBallLevel = 0;
+        PoisonBallLevel = 0;
+        DroneLevel = 0;
+        ArrowLevel = 0;
+        IceLevel = 0;
+        SwordShieldLevel = 0;
+        MeteorLevel = 0;
+        BounceBallLevel = 0;
+        ReWindLevel = 0;
+    }
+
     public static GameDataManager Instance
     {
         get
         {
             if (_instance == null)
+            {
                 _instance = new GameDataManager();
+                
+            }
+                
             return _instance;
         }
     }
@@ -200,7 +235,7 @@ public class GameDataManager
         get { return _gameData.bounceBallLevel; }
         set { _gameData.bounceBallLevel = value; }
     }
-    public int ReWind
+    public int ReWindLevel
     {
         get { return _gameData.ReWindLevel; }
         set { _gameData.ReWindLevel = value; }
