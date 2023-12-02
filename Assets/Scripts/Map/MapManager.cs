@@ -62,7 +62,7 @@ public class MapManager : MonoBehaviour
         // _isBalltanLive = _balltanScript.isAlive;
         // _isBoss2Live = _boss2Script.isAlive;
 
-        if (GameDataManager.Instance.KillScore >= 5 || Input.GetKeyDown(KeyCode.G))
+        if (GameDataManager.Instance.KillScore >= 300 || Input.GetKeyDown(KeyCode.G))
         {
             Debug.Log("100");
             StartCoroutine(MoveFence(fence));
