@@ -14,6 +14,7 @@ public class MapManager : MonoBehaviour
     public GameObject player;           // player 오브젝트
     public GameObject balltan;          // 발탄 오브젝트
     // public GameObject boss2;            // boss2 오브젝트
+    public GameObject poolManager;
     public float tileSize;              // 타일 1개 길이
 
     private float _dirFront;     // 앞 타일 거리
@@ -25,17 +26,18 @@ public class MapManager : MonoBehaviour
     private float _posZ;         // 플레이어 오브젝트 z값 위치
     private float _movePos;      // 타일 이동값
 
-    private float _duration = 2f;       // 구조물 등장 소요 시간
+    private float _duration = 1f;       // 구조물 등장 소요 시간
     private float _reDuration = 5f;     // 구조물 사라짐 소요 시간
     private float _targetY = 0;         // 구조물 올라오는 위치
     private float _castleTargetY = 20;  // castle 구조물 올라오는 위치
     private float _reTargetY = -100;    // 구조물 내려가는 위치
 
-    private bool _isBalltanLive;         // 발탄 생존 여부 플래그
+    private bool _isBalltanLive = false;         // 발탄 생존 여부 플래그
     private bool _isBoss2Live;           // boss2 생존 여부 플래그
 
     private Balltan _balltanScript;      // 발탄 스크립트 참조
     // private Boss2 _boss2Script;          // boss2 스크립트 참조
+    private GameDataManager _gmScript;
 
     private bool _isFence = false;       // fance 등장 상태 플래그
     private bool _isCastle = false;      // castle 등장 상태 플래그
@@ -60,25 +62,34 @@ public class MapManager : MonoBehaviour
         // _isBalltanLive = _balltanScript.isAlive;
         // _isBoss2Live = _boss2Script.isAlive;
 
+        if (GameDataManager.Instance.KillScore >= 5 || Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log("100");
+            StartCoroutine(MoveFence(fence));
+            StartCoroutine(MovePortal(portal));
+            _isBalltanLive = true;
+            poolManager.SetActive(false);
+        }
+        
         if (_isBalltanLive && !_isFence)
         {
-            MoveFence(fence);
+            StartCoroutine(MoveFence(fence));
             _isFence = true;
         }
         else if (!_isBalltanLive && _isFence)
         {
-            ReMoveFence(fence);
+            StartCoroutine(ReMoveFence(fence));
             _isFence = false;
         }
 
         if (_isBoss2Live && !_isCastle)
         {
-            MoveCastle(castle);
+            StartCoroutine(MoveCastle(castle));
             _isCastle = true;
         }
         else if (!_isBoss2Live && _isCastle)
         {
-            ReMoveFence(castle);
+            StartCoroutine(ReMoveFence(castle));
             _isCastle = false;
         }
         

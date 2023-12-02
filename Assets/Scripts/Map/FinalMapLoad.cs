@@ -10,7 +10,7 @@ public class FinalMapLoad : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("FinalScene");
+            SceneManager.LoadScene("BossScene");
         }
     }
 }
