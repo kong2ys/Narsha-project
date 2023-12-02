@@ -48,32 +48,72 @@ public class CreateGrenade : MonoBehaviour
         void MakeGrenade()
         {
         _isCoolTime = true;
-        if (GameDataManager.Instance.GrenadeLevel <= 1)
+        switch (GameDataManager.Instance.GrenadeLevel)
         {
-                    for (int i = 0; i < _surutanPoolSize + 1; i++) 
-                    {
-                        _surutan = _surutanObjectPool[i];
-                        if (_surutan.activeSelf == false)
-                        {
-                            _surutan.transform.position = busterMakePosition.position;
-                            _surutan.SetActive(true);
-                            break;
-                        }
-                    }
-        }
-        else
-        {
-            _coolTime = 10.0f;
-            for (int i = 0; i < _busterPoolSize+1; i++) 
-            {
-                _buster = _busterObjectPool[i];
-                if (_buster.activeSelf == false)
+            case 1:
+                for (int i = 0; i < _surutanPoolSize + 1; i++) 
                 {
-                    _buster.transform.position = busterMakePosition.position;
-                    _buster.SetActive(true);
-                    break;
+                    _surutan = _surutanObjectPool[i];
+                    if (_surutan.activeSelf == false)
+                    {
+                        _surutan.transform.position = busterMakePosition.position;
+                        _surutan.SetActive(true);
+                        break;
+                    }
                 }
-            }
+                break;
+            case 2:
+                _coolTime = 10.0f;
+                for (int i = 0; i < _busterPoolSize+1; i++) 
+                {
+                    _buster = _busterObjectPool[i];
+                    if (_buster.activeSelf == false)
+                    {
+                        _buster.transform.position = busterMakePosition.position;
+                        _buster.SetActive(true);
+                        break;
+                    }
+                }
+                break;
+            case 3:
+                _coolTime = 10.0f;
+                for (int i = 0; i < _busterPoolSize+1; i++) 
+                {
+                    _buster = _busterObjectPool[i];
+                    if (_buster.activeSelf == false)
+                    {
+                        _buster.transform.position = busterMakePosition.position;
+                        _buster.SetActive(true);
+                        break;
+                    }
+                }
+                break;
+            case 4:
+                _coolTime = 10.0f;
+                for (int i = 0; i < _busterPoolSize+1; i++) 
+                {
+                    _buster = _busterObjectPool[i];
+                    if (_buster.activeSelf == false)
+                    {
+                        _buster.transform.position = busterMakePosition.position;
+                        _buster.SetActive(true);
+                        break;
+                    }
+                }
+                break;
+            case 5:
+                _coolTime = 10.0f;
+                for (int i = 0; i < _busterPoolSize+1; i++) 
+                {
+                    _buster = _busterObjectPool[i];
+                    if (_buster.activeSelf == false)
+                    {
+                        _buster.transform.position = busterMakePosition.position;
+                        _buster.SetActive(true);
+                        break;
+                    }
+                }
+                break;
         }
         StartCoroutine(CoolTime());
         }
