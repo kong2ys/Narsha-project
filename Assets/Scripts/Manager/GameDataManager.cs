@@ -5,6 +5,7 @@ using UnityEngine;
 using System.IO;
 //using static Define;
 
+[Serializable]
 public class GameData
 {
     public int haveGold = 0;
@@ -53,6 +54,7 @@ public class GameData
     public float bounceBallDamage = 10.0f;
 }
 
+[Serializable]
 public class GameDataManager
 {
     private static GameDataManager _instance;
