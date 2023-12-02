@@ -14,12 +14,15 @@ public class Balltan : MonoBehaviour
     public float dash = 1.25f;
     public float currentTime;
     public float speed = 1f;
+    public float str = 100;
+    private float _attackDelay;
 
+    private float pt0currentTime = 0f;
     public float pt0Time = 1.5f;
     public float pt1Time = 2f;
     public float pt2Time = 6f;
     public float pt3Time = 2f;
-    public float pt4Time = 1.5f;
+    public float pt4Time = 0.1f;
 
     public float hp = 1500;
     public float maxhp = 1500;
@@ -27,6 +30,7 @@ public class Balltan : MonoBehaviour
 
     private bool summonWall = false;
     private bool drawLine = false;
+    private bool attack = true;
 
     private Vector3 _dir;
     
@@ -37,17 +41,24 @@ public class Balltan : MonoBehaviour
     public float radius = 8f;
 
     Color _red = new Color(1f, 0f, 0f, 0.2f);
+    public GameObject strongEffect;
+    public GameObject spinEffect;
+    public GameObject screamEffect;
     
     public GameObject target;
     public GameObject wall;
-    private GameObject circle;
+    private GameObject _circle;
     public GameObject pt2Dis;
+    
     public Slider hpslider;
+
+    private Animator _anim;
     void Awake()
     {
         GameObject circlemap = Instantiate(wall);
+        _anim = GetComponentInChildren<Animator>();
         circlemap.SetActive(false);
-        circle = circlemap;
+        _circle = circlemap;
 
     }
 
@@ -56,9 +67,30 @@ public class Balltan : MonoBehaviour
     {
         hpslider.value = (float)hp / (float)maxhp;
         Pattern();
-        Move();
         if (hp < 1)
             isAlive = false;
+        float moveDis = Vector3.Distance(target.transform.position, transform.position);
+        _anim.SetBool("_isAttack",pattern == 0 && moveDis <= 4f);
+        _anim.SetBool("_isRun",pt2Time/5 * 2.5 > currentTime && pattern == 2);
+        _anim.SetBool("_isMove",pattern == 4 || (pattern == 0 && moveDis > 4f));
+        _anim.SetBool("_isScream",currentTime > 0 && pattern == 3);
+        if (pattern != 3)
+            screamEffect.SetActive(false);
+        if (hp < maxhp / 5)
+        {
+            speed = 4;
+            str = 150;
+            strongEffect.SetActive(true);
+        }
+
+        if (_attackDelay > 0)
+            _attackDelay -= Time.deltaTime;
+        
+        else
+        {
+            _attackDelay = 0;
+            attack = true;
+        }
     }
     private void OnDrawGizmos()
     {
@@ -80,12 +112,13 @@ public class Balltan : MonoBehaviour
                 
                 if (summonWall)
                 {
+                    Move();
                     if (currentTime == 0)
                         pt0Time = Random.Range(2, 4);
                     else if (currentTime > pt0Time)
                     {
                         currentTime = 0;
-                        pattern = Random.Range(2, 5);
+                        pattern = Random.Range(2,5);
                         break;
                     }
                     currentTime += Time.deltaTime;
@@ -116,7 +149,7 @@ public class Balltan : MonoBehaviour
                 if (currentTime == 0)
                     currentTime = pt3Time;
                 _move = false;
-                Pizza();
+                Scream();
                 break;
             case 4: //전방으로 이동하며 회전 공격
                 if (currentTime == 0)
@@ -129,6 +162,7 @@ public class Balltan : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
+        BossScenePlayerController player = target.GetComponent<BossScenePlayerController>();
         if (collision.CompareTag("Wall")) //돌진 충돌 판정
         {
             Dash();
@@ -136,14 +170,18 @@ public class Balltan : MonoBehaviour
             pattern = 0;
             currentTime = 0;
         }
-        else if (collision.CompareTag("Player") && pattern == 2) //돌진 피해
+        else if (collision.CompareTag("Player") && pattern == 2 && pt2Time/5 * 2f > currentTime) //돌진 피해
         {
-            target.GetComponent<BossScenePlayerController>().DamageAction(30);
+            target.GetComponent<BossScenePlayerController>().DamageAction(0.05f * str);
+            player.stopMove = 0.2f;
         }
         else if (collision.CompareTag("Attack"))
         {
-            BossScenePlayerController player = target.GetComponent<BossScenePlayerController>();
-            hp -= player.attackPower;
+            // 광폭화 시 받는 피해 감소
+            if (hp < maxhp / 5)
+                hp -= player.attackPower / 2;
+            else
+                hp -= player.attackPower;
         }
     }
     void Wall()
@@ -152,8 +190,8 @@ public class Balltan : MonoBehaviour
         currentTime -= Time.deltaTime;
         if (currentTime < 0)
         {
-            circle.transform.position = transform.position;
-            circle.SetActive(true); 
+            _circle.transform.position = transform.position;
+            _circle.SetActive(true); 
             summonWall = true; 
             pattern = 0; 
             currentTime = 0;
@@ -188,7 +226,7 @@ public class Balltan : MonoBehaviour
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-    void Pizza()
+    void Scream()
     {
         currentTime -= Time.deltaTime;
         Vector3 interV = targetPos.position - transform.position; 
@@ -201,13 +239,15 @@ public class Balltan : MonoBehaviour
             float theta = Mathf.Acos(dot); 
             // angleRange와 비교하기 위해 degree로 변환
             float degree = Mathf.Rad2Deg * theta;
-
+            Debug.Log(degree);
             // 시야각 판별
-            if (degree <= angleRange / 2f && currentTime < 0)
+            if (degree <= angleRange / 2f && currentTime < 0.1f)
             {
-                target.GetComponent<BossScenePlayerController>().DamageAction(130); 
+                target.GetComponent<BossScenePlayerController>().DamageAction(0.03f * str); 
             }
         }
+        if (currentTime < pt3Time / 3.5)
+            screamEffect.SetActive(true);
             
         if (currentTime < 0)
         {
@@ -221,27 +261,49 @@ public class Balltan : MonoBehaviour
     void Spin()
     {
         currentTime -= Time.deltaTime;
+        spinEffect.SetActive(true);
         
         float pt3Dis = Vector3.Distance(target.transform.position, transform.position);
-        if (pt3Dis < 5f && currentTime < 0.2f)
+        if (pt3Dis < 7f)
         {
             BossScenePlayerController player = target.GetComponent<BossScenePlayerController>();
-            Debug.Log($"회전에 부딪힘 {GameDataManager.Instance.PlayerHp}");
-            player.DamageAction(5);
-            player.stopMove += 0.1f;
+            if (player.stopMove > 0)
+            {
+                player.DamageAction(0.01f * str);
+                player.stopMove = 0.05f;
+            }
+                
             target.transform.position += transform.forward * (Time.deltaTime * 10f);
         }
         if (currentTime < 0)
         {
             pattern = 0;
             currentTime = 0;
+            spinEffect.SetActive(false);
         }
     }
 
     void Move()
     {
         float moveDis = Vector3.Distance(target.transform.position, transform.position);
-        if (_move && summonWall && moveDis > 5f)
+        if (_move && summonWall && moveDis > 4f)
+        {
             transform.position += transform.forward * (Time.deltaTime * speed);
+        }
+        else
+        {
+            if (attack)
+            {
+                BossScenePlayerController player = target.GetComponent<BossScenePlayerController>();
+                if (moveDis <= 4f)
+                {
+                    player.DamageAction(0.2f * str);
+                    _attackDelay = 3f;
+                    pt0currentTime = 0;
+                    attack = false;
+                }
+                    
+            }
+        }
     }
 }
