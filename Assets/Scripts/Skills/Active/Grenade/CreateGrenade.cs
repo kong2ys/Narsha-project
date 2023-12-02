@@ -48,35 +48,33 @@ public class CreateGrenade : MonoBehaviour
         void MakeGrenade()
         {
         _isCoolTime = true;
-        switch (GameDataManager.Instance.GrenadeLevel)
+        if (GameDataManager.Instance.GrenadeLevel <= 1)
         {
-            case 0:
-                
-                for (int i = 0; i < _surutanPoolSize + 1; i++) 
-                {
-                    _surutan = _surutanObjectPool[i];
-                    if (_surutan.activeSelf == false)
+                    for (int i = 0; i < _surutanPoolSize + 1; i++) 
                     {
-                        _surutan.transform.position = busterMakePosition.position;
-                        _surutan.SetActive(true);
-                        break;
+                        _surutan = _surutanObjectPool[i];
+                        if (_surutan.activeSelf == false)
+                        {
+                            _surutan.transform.position = busterMakePosition.position;
+                            _surutan.SetActive(true);
+                            break;
+                        }
                     }
-                }
-                break;
-            case 1:
-                for (int i = 0; i < _busterPoolSize+1; i++) 
-                {
-                    _buster = _busterObjectPool[i];
-                    if (_buster.activeSelf == false)
-                    {
-                        _buster.transform.position = busterMakePosition.position;
-                        _buster.SetActive(true);
-                        break;
-                    }
-                }
-                break;
         }
-            StartCoroutine(CoolTime());
+        else
+        {
+            for (int i = 0; i < _busterPoolSize+1; i++) 
+            {
+                _buster = _busterObjectPool[i];
+                if (_buster.activeSelf == false)
+                {
+                    _buster.transform.position = busterMakePosition.position;
+                    _buster.SetActive(true);
+                    break;
+                }
+            }
+        }
+        StartCoroutine(CoolTime());
         }
     }
 
