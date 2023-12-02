@@ -35,9 +35,11 @@ public class PlayerController :  MonoBehaviour
     private Camera _camera;
 
     public ArrowFire arrowFire;
+    private Mujcuk _mujuck;
 
     void Start()
     {
+        _mujuck = GameObject.FindWithTag("Mujuck").GetComponent<Mujcuk>(); 
         GameDataManager.Instance.Initialize(); // 게임 데이터 초기화 할 것들 초기화
         GameDataManager.Instance.PlayerHp = GameDataManager.Instance.PlayerMaxHp;
         
@@ -160,8 +162,12 @@ public class PlayerController :  MonoBehaviour
 
     public void DamageAction(float damage) // 데미지 입기
     {
-        GameDataManager.Instance.PlayerHp -= damage;
-        Debug.Log("남은 HP : " + GameDataManager.Instance.PlayerHp);
+        if (!_mujuck._isMujuck)
+        {
+            GameDataManager.Instance.PlayerHp -= damage;
+            Debug.Log("남은 HP : " + GameDataManager.Instance.PlayerHp);
+        }
+        
     }
 
     void DieAction()
