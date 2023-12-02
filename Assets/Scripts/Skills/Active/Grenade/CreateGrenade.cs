@@ -63,6 +63,7 @@ public class CreateGrenade : MonoBehaviour
         }
         else
         {
+            _coolTime = 10.0f;
             for (int i = 0; i < _busterPoolSize+1; i++) 
             {
                 _buster = _busterObjectPool[i];
