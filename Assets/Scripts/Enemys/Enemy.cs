@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
             return;
         }
         
-        health -= damage;
+        health -= (damage + GameDataManager.Instance.PlusStr);
         Debug.Log("애니메hp "+health);
         
         if (health > 0)

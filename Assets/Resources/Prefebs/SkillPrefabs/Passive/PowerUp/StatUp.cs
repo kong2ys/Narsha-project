@@ -27,19 +27,19 @@ public class StatUp : MonoBehaviour
         {
             case StatType.Str:
             {
-                GameDataManager.Instance.PlusStr += 0.5f;
+                GameDataManager.Instance.PlusStr += 2.0f;
                 Debug.Log("공격력" + GameDataManager.Instance.PlusStr);
                 break;
             }
             case StatType.Hp:
             {
-                GameDataManager.Instance.PlayerHp *= 0.2f;
+                GameDataManager.Instance.PlayerHp += (GameDataManager.Instance.PlayerHp * 0.1f);
                 Debug.Log("체력" + GameDataManager.Instance.PlayerHp);
                 break;
             }
             case StatType.Dex:
             {
-                GameDataManager.Instance.PlusDex += 0.5f;
+                GameDataManager.Instance.PlusDex += (GameDataManager.Instance.PlayerMoveSpeed * 0.2f);
                 Debug.Log("이동속도" + GameDataManager.Instance.PlusDex);
                 break;
             }
