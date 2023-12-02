@@ -143,6 +143,7 @@ public class PlayerController :  MonoBehaviour
         _dir.y = _yVelocity;
         
         float totalSpeed = GameDataManager.Instance.PlayerMoveSpeed + GameDataManager.Instance.PlusDex;
+        Debug.Log(totalSpeed);
         _characterController.Move(_dir * (totalSpeed * Time.deltaTime));
     }
     
