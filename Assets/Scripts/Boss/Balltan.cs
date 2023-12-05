@@ -32,6 +32,9 @@ public class Balltan : MonoBehaviour
     private bool drawLine = false;
     private bool attack = true;
 
+    private float _duration = 1f;
+    private float _targetY = 0;
+    
     private Vector3 _dir;
     
     public Transform targetPos;    // 부채꼴에 포함되는지 판별할 타겟
@@ -134,7 +137,7 @@ public class Balltan : MonoBehaviour
                     isAlive = true;
                 }
                 var position = lookTarget.transform.position;
-                transform.position = new Vector3(position.x + 5,position.y,position.z);
+                transform.position = new Vector3(position.x + 5, position.y, position.z);
                 _move = false;
                 Wall();
                 break;
@@ -186,12 +189,12 @@ public class Balltan : MonoBehaviour
     }
     void Wall()
     {
- 
         currentTime -= Time.deltaTime;
         if (currentTime < 0)
         {
-            _circle.transform.position = transform.position;
-            _circle.SetActive(true); 
+            _circle.transform.position = new Vector3(transform.position.x, -100, transform.position.z);
+            _circle.SetActive(true);
+            StartCoroutine(MoveFence(_circle));
             summonWall = true; 
             pattern = 0; 
             currentTime = 0;
@@ -305,5 +308,24 @@ public class Balltan : MonoBehaviour
                     
             }
         }
+    }
+    
+    IEnumerator MoveFence(GameObject fence)
+    {
+        Vector3 startPosition = fence.transform.position;
+        float elapsed = 0f;
+
+        while (elapsed < _duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / _duration;
+            Vector3 newPosition = new Vector3(fence.transform.position.x,
+                Mathf.LerpUnclamped(startPosition.y, _targetY, t), fence.transform.position.z);
+            fence.transform.position = newPosition;
+            yield return null;
+        }
+
+        Vector3 finalPosition = new Vector3(fence.transform.position.x, _targetY, fence.transform.position.z);
+        fence.transform.position = finalPosition;
     }
 }
