@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Map
 {
-    public interface IMoveObjects
+    public interface IMoveStructures
     {
         void CheckFlags();
         
-        IEnumerator MoveObject(GameObject obj, float duration, float targetY);
+        IEnumerator MoveStructure(GameObject obj, float duration, float targetY);
     }
 }

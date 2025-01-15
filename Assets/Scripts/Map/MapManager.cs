@@ -9,6 +9,8 @@ namespace Map
 {
     public class MapManager : MonoBehaviour
     {
+        public static MapManager Instance;
+        
         public GameObject[] mappingObj; // 9개 타일 오브젝트
         public GameObject player; // player 오브젝트
 
@@ -27,9 +29,7 @@ namespace Map
         private float _posZ;    // 플레이어 오브젝트 z값 위치
         private float _movePos; // 타일 이동값
 
-
-
-
+        public MoveStructures moveStructures;
 
         private GameDataManager _gmScript; // 게임 데이터 매니저 참조
 
@@ -49,8 +49,15 @@ namespace Map
         private float[] _rightPos;
         private float[] _leftPos;
 
-        private void Start()
+        private void Awake()
         {
+            if (Instance = null)
+            {
+                Instance = this;
+            }
+
+            moveStructures = gameObject.AddComponent<MoveStructures>();
+            
             _dirFront = tileSize / 2;
             _dirBack = tileSize / 2 * -1;
             _dirRight = tileSize / 2;

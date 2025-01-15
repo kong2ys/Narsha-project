@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Map
 {
-    public class MoveObjects : MonoBehaviour, IMoveObjects
+    public class MoveStructures : MonoBehaviour, IMoveStructures
     {
         public GameObject[] bossObj;    // 보스 구조물 오브젝트 ([0]: fence / [1]: castle / [2]: portal)
     
@@ -13,7 +13,7 @@ namespace Map
         private float _reDuration = 5f;     // 구조물 사라짐 소요 시간
         private float _targetY = 0;         // 구조물 올라오는 위치
         private float _castleTargetY = 20;  // castle 구조물 올라오는 위치
-        private float _reTargetY = -100;    // 구조물 내려가는 위치\
+        private float _reTargetY = -100;    // 구조물 내려가는 위치
     
         private bool _isBalltanLive = false; // 발탄 생존 여부 플래그
         private bool _isBoss2Live = false;   // boss2 생존 여부 플래그
@@ -24,13 +24,15 @@ namespace Map
         private bool _isFence = false;  // fence 등장 상태 플래그
         private bool _isCastle = false; // castle 등장 상태 플래그
         private bool _isPortal = false; // portal 등장 상태 플래그
+        
+        
 
-        private void Start()
+        private void Awake()
         {
             // Balltan _balltanScript = balltan.GetComponent<Balltan>();
             // Boss2 _boss2Script = boss2.GetComponent<Boss2>();
         }
-
+        
         public void CheckFlags()
         {
             // 보스 생존 플래그 설정
@@ -39,37 +41,37 @@ namespace Map
 
             if (GameDataManager.Instance.KillScore >= 300 || Input.GetKeyDown(KeyCode.G))
             {
-                StartCoroutine(MoveFence(bossObj[0]));
-                StartCoroutine(MoveUnder(bossObj[2], _targetY));
+                StartCoroutine(MoveStructure(bossObj[0], _duration, _targetY));
+                StartCoroutine(MoveStructure(bossObj[2],_duration ,_targetY));
                 _isBalltanLive = true;
-                poolManager.SetActive(false);
+                MapManager.Instance.poolManager.SetActive(false);
             }
 
             if (_isBalltanLive && !_isFence)
             {
-                StartCoroutine(MoveFence(bossObj[0]));
+                StartCoroutine(MoveStructure(bossObj[0], _duration, _targetY));
                 _isFence = true;
             }
             else if (!_isBalltanLive && _isFence)
             {
-                StartCoroutine(RemoveObj(bossObj[0]));
+                StartCoroutine(MoveStructure(bossObj[0],_reDuration, _reTargetY));
                 _isFence = false;
             }
 
             if (_isBoss2Live && !_isCastle)
             {
-                StartCoroutine(MoveUnder(bossObj[1], _castleTargetY));
+                StartCoroutine(MoveStructure(bossObj[1], _duration,_castleTargetY));
                 _isCastle = true;
             }
             else if (!_isBoss2Live && _isCastle)
             {
-                StartCoroutine(RemoveObj(bossObj[1]));
+                StartCoroutine(MoveStructure(bossObj[1], _reDuration, _reTargetY));
                 _isCastle = false;
             }
 
             if (_isPortal)
             {
-                StartCoroutine(MoveUnder(bossObj[2], _castleTargetY));
+                StartCoroutine(MoveStructure(bossObj[2], _duration,_castleTargetY));
                 _isPortal = false;
             }
 
@@ -80,22 +82,22 @@ namespace Map
             }
         }
 
-        public IEnumerator MoveObject(GameObject obj, float duration, float targetY)
+        public IEnumerator MoveStructure(GameObject obj, float duration, float targetY)
         {
             Vector3 startPosition = obj.transform.position;
             float elapsed = 0f;
 
-            while (elapsed < _reDuration)
+            while (elapsed < _reDuration) 
             {
                 elapsed += Time.deltaTime;
                 float t = elapsed / _duration;
                 Vector3 newPosition = new Vector3(obj.transform.position.x,
-                    Mathf.LerpUnclamped(startPosition.y, _reTargetY, t), obj.transform.position.z);
+                    Mathf.LerpUnclamped(startPosition.y, targetY, t), obj.transform.position.z);
                 obj.transform.position = newPosition;
                 yield return null;
             }
 
-            Vector3 finalPosition = new Vector3(obj.transform.position.x, _reTargetY, obj.transform.position.z);
+            Vector3 finalPosition = new Vector3(obj.transform.position.x, targetY, obj.transform.position.z);
             obj.transform.position = finalPosition;
         }
     }
