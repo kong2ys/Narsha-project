@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss3State : MonoBehaviour, IStructureState
+public class Boss3State : MonoBehaviour, StructureState
 {
     // Start is called before the first frame update
     void Start()

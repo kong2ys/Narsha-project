@@ -30,7 +30,12 @@ namespace Map
         private float _movePos; // 타일 이동값
 
         public MoveStructures moveStructures;
+        public StructureController structureController;
 
+        public bool isBalltanLive = false; // 발탄 생존 여부 플래그
+        public bool isBoss2Live = false;   // boss2 생존 여부 플래그
+        
+        
         private GameDataManager _gmScript; // 게임 데이터 매니저 참조
 
 
@@ -56,6 +61,7 @@ namespace Map
                 Instance = this;
             }
 
+            structureController = gameObject.GetComponent<StructureController>();
             moveStructures = gameObject.AddComponent<MoveStructures>();
             
             _dirFront = tileSize / 2;

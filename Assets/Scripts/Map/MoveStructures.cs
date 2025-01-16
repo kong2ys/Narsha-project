@@ -15,8 +15,7 @@ namespace Map
         private float _castleTargetY = 20;  // castle 구조물 올라오는 위치
         private float _reTargetY = -100;    // 구조물 내려가는 위치
     
-        private bool _isBalltanLive = false; // 발탄 생존 여부 플래그
-        private bool _isBoss2Live = false;   // boss2 생존 여부 플래그
+
 
         private Balltan _balltanScript;    // 발탄 스크립트 참조
         // private Boss2 _boss2Script;     // boss2 스크립트 참조
