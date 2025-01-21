@@ -1,28 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Map;
 using UnityEngine;
 
-public class Boss2State : MonoBehaviour, StructureState
+public class Boss2State : StructureState
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnSpawn()
     {
-        
+        StartCoroutine(MoveStructure(1, _duration, 1f));
+        structureController.isBoss2Live = true;
+        MapManager.Instance.poolManager.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnDie()
     {
-        
-    }
-    
-    public void OnSpawn()
-    {
-        
-    }
-
-    public void OnDie()
-    {
-        
+        StartCoroutine(MoveStructure(1, _reDuration, -100f));
+        structureController.isBoss2Live = false;
+        MapManager.Instance.poolManager.SetActive(true);
     }
 }

@@ -16,6 +16,13 @@ namespace Map
         private StructureState boss2State;
         private StructureState boss3State;
 
+        public bool isBalltanLive = false; // 발탄 생존 여부 플래그
+        public bool isBoss2Live = false;   // boss2 생존 여부 플래그
+        
+        private bool _isFence = false;  // fence 등장 상태 플래그
+        private bool _isCastle = false; // castle 등장 상태 플래그
+        private bool _isPortal = false; // portal 등장 상태 플래그
+        
         public void Awake()
         {
             balttanState = gameObject.AddComponent<BalttanState>();

@@ -7,7 +7,7 @@ namespace Map
 {
     public class MoveStructures : MonoBehaviour, IMoveStructures
     {
-        public GameObject[] bossObj;    // 보스 구조물 오브젝트 ([0]: fence / [1]: castle / [2]: portal)
+
     
         private float _duration = 1f;       // 구조물 등장 소요 시간
         private float _reDuration = 5f;     // 구조물 사라짐 소요 시간

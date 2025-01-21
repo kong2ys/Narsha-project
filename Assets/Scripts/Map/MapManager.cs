@@ -11,6 +11,7 @@ namespace Map
     {
         public static MapManager Instance;
         
+        public GameObject[] bossObjects;    // 보스 구조물 오브젝트 ([0]: fence / [1]: castle / [2]: portal)
         public GameObject[] mappingObj; // 9개 타일 오브젝트
         public GameObject player; // player 오브젝트
 
@@ -29,11 +30,17 @@ namespace Map
         private float _posZ;    // 플레이어 오브젝트 z값 위치
         private float _movePos; // 타일 이동값
 
-        public MoveStructures moveStructures;
         public StructureController structureController;
 
-        public bool isBalltanLive = false; // 발탄 생존 여부 플래그
-        public bool isBoss2Live = false;   // boss2 생존 여부 플래그
+        enum StructureStates
+        {
+            Idle,
+            Balltan,
+            Boss2,
+            Boss3
+        }
+
+        private StructureStates _structureState;
         
         
         private GameDataManager _gmScript; // 게임 데이터 매니저 참조
@@ -63,6 +70,8 @@ namespace Map
 
             structureController = gameObject.GetComponent<StructureController>();
             moveStructures = gameObject.AddComponent<MoveStructures>();
+
+            _structureState = StructureStates.Idle;
             
             _dirFront = tileSize / 2;
             _dirBack = tileSize / 2 * -1;
@@ -133,7 +142,7 @@ namespace Map
             for (int i = 0; i < 3; i++)
             {
                 mappingObj[objList[i]].transform.position += new Vector3(posList[0], posList[1], posList[2]);
-                bossObj[i].transform.position += new Vector3(posList[3], posList[4], posList[5]);
+                structureController.bossObj[i].transform.position += new Vector3(posList[3], posList[4], posList[5]);
             }
         }
 
@@ -146,46 +155,6 @@ namespace Map
                 mapTile[sl[i + 1]] = mapTile[sl[i + 2]];
                 mapTile[sl[i + 2]] = dummy;
             }
-        }
-
-        IEnumerator MoveFence(GameObject fence)
-        {
-            Vector3 startPosition = fence.transform.position;
-            float elapsed = 0f;
-
-            while (elapsed < _duration)
-            {
-                elapsed += Time.deltaTime;
-                float t = elapsed / _duration;
-                Vector3 newPosition = new Vector3(fence.transform.position.x,
-                    Mathf.LerpUnclamped(startPosition.y, _targetY, t), fence.transform.position.z);
-                fence.transform.position = newPosition;
-                yield return null;
-            }
-
-            Vector3 finalPosition = new Vector3(fence.transform.position.x, _targetY, fence.transform.position.z);
-            fence.transform.position = finalPosition;
-        }
-
-        
-
-        IEnumerator MoveUnder(GameObject under, float underTargetY)
-        {
-            Vector3 startPosition = under.transform.position;
-            float elapsed = 0f;
-
-            while (elapsed < _duration)
-            {
-                elapsed += Time.deltaTime;
-                float t = elapsed / _duration;
-                Vector3 newPosition = new Vector3(under.transform.position.x,
-                    Mathf.LerpUnclamped(startPosition.y, underTargetY, t), under.transform.position.z);
-                under.transform.position = newPosition;
-                yield return null;
-            }
-
-            Vector3 finalPosition = new Vector3(under.transform.position.x, underTargetY, under.transform.position.z);
-            under.transform.position = finalPosition;
         }
     }
 }
